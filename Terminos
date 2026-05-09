@@ -1,1 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Términos y Condiciones | Control Docente GT</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    display:flex;
+    min-height:100vh;
+}
+
+/* =========================
+   MENU LATERAL
+========================= */
+
+.sidebar{
+    width:260px;
+    background:#0d47a1;
+    color:white;
+    padding:25px 20px;
+    border-right:4px solid #1565c0;
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    height:100%;
+}
+
+.sidebar h2{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.sidebar p{
+    font-size:14px;
+    opacity:0.9;
+    margin-bottom:30px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,0.12);
+    padding:12px;
+    border-radius:8px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    background:white;
+    color:#0d47a1;
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:40px;
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.hero-banner{
+    margin-bottom:25px;
+}
+
+.banner-img{
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    object-fit:cover;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:white;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    margin-bottom:30px;
+}
+
+.hero-top{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.app-logo{
+    width:120px;
+    height:120px;
+    border-radius:20px;
+    object-fit:cover;
+    border:4px solid #1565c0;
+    background:#e3f2fd;
+}
+
+.hero h1{
+    color:#0d47a1;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    line-height:1.8;
+    margin-top:10px;
+    font-size:17px;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.section h2{
+    color:#1565c0;
+    margin-bottom:18px;
+}
+
+.section p{
+    line-height:1.9;
+    margin-bottom:15px;
+}
+
+.section ul{
+    padding-left:22px;
+    line-height:2;
+}
+
+/* =========================
+   BLOQUES DESTACADOS
+========================= */
+
+.highlight{
+    background:#e8f0fe;
+    border-left:6px solid #1565c0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:6px solid #ffb300;
+}
+
+.warning strong{
+    color:#bf360c;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:40px;
+    text-align:center;
+    padding:25px;
+    color:#666;
+    font-size:14px;
+}
+
+.dev{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+
+.dev-logo{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    body{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     MENU LATERAL
+========================= -->
+
+<div class="sidebar">
+
+    <h2>Control Docente GT</h2>
+
+    <p>
+        Plataforma educativa y administrativa.
+    </p>
+
+    <div class="menu">
+
+        <a href="index.html">Inicio</a>
+
+        <a href="privacidad.html">
+            Política de Privacidad
+        </a>
+
+        <a href="terminos.html">
+            Condiciones del Servicio
+        </a>
+
+        <a href="seguridad.html">
+            Privacidad y Seguridad
+        </a>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     CONTENIDO
+========================= -->
+
+<div class="main">
+
+    <!-- ENCABEZADO -->
+
+    <div class="hero-banner">
+
+        <img src="Encabezado%20(1).png"
+             alt="Encabezado"
+             class="banner-img">
+
+    </div>
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="hero-top">
+
+            <img src="Control%20Docente%20GT%20(2).png"
+                 alt="Logo App"
+                 class="app-logo">
+
+            <div>
+
+                <h1>Términos y Condiciones</h1>
+
+                <p>
+                    Última actualización: Mayo 2026
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INTRODUCCION -->
+
+    <div class="section">
+
+        <h2>Aceptación de los Términos</h2>
+
+        <p>
+            Al utilizar Control Docente GT, el usuario acepta los presentes Términos y Condiciones de uso.
+        </p>
+
+        <p>
+            Si el usuario no está de acuerdo con alguno de los términos establecidos, deberá abstenerse de utilizar la aplicación y sus servicios relacionados.
+        </p>
+
+    </div>
+
+    <!-- DESCRIPCION -->
+
+    <div class="section">
+
+        <h2>Descripción de la Plataforma</h2>
+
+        <p>
+            Control Docente GT es una plataforma educativa y administrativa diseñada para apoyar procesos académicos y de organización escolar dentro de instituciones educativas.
+        </p>
+
+        <p>
+            Entre sus funciones se incluyen:
+        </p>
+
+        <ul>
+            <li>Gestión de estudiantes y grupos</li>
+            <li>Registro de calificaciones y actividades</li>
+            <li>Generación de reportes académicos</li>
+            <li>Exportación de información</li>
+            <li>Respaldos y almacenamiento de archivos</li>
+            <li>Herramientas de organización docente</li>
+        </ul>
+
+    </div>
+
+    <!-- USO ADECUADO -->
+
+    <div class="section highlight">
+
+        <h2>Uso Adecuado de la Aplicación</h2>
+
+        <p>
+            El usuario se compromete a utilizar la plataforma de forma responsable, ética y conforme a las leyes y normativas aplicables en su región o institución educativa.
+        </p>
+
+        <p>
+            Queda prohibido utilizar la aplicación para actividades ilícitas, fraudulentas o que vulneren derechos de terceros.
+        </p>
+
+    </div>
+
+    <!-- CUENTA GOOGLE -->
+
+    <div class="section">
+
+        <h2>Cuenta de Google y Autenticación</h2>
+
+        <p>
+            Algunas funciones de la plataforma requieren autenticación mediante Google Sign-In para permitir respaldos, almacenamiento y exportación de información académica.
+        </p>
+
+        <p>
+            El usuario es responsable de mantener la seguridad de su cuenta de Google y de las actividades realizadas mediante dicha cuenta.
+        </p>
+
+    </div>
+
+    <!-- GOOGLE DRIVE -->
+
+    <div class="section">
+
+        <h2>Uso de Google Drive</h2>
+
+        <p>
+            La integración con Google Drive se utiliza exclusivamente para respaldos y almacenamiento de archivos generados directamente por el usuario dentro de la aplicación.
+        </p>
+
+        <p>
+            Control Docente GT no accede ni modifica archivos personales ajenos al funcionamiento de la plataforma.
+        </p>
+
+    </div>
+
+    <!-- DATOS ACADEMICOS -->
+
+    <div class="section">
+
+        <h2>Responsabilidad sobre la Información</h2>
+
+        <p>
+            El usuario es responsable de la información ingresada, almacenada o administrada dentro de la aplicación.
+        </p>
+
+        <p>
+            Esto incluye:
+        </p>
+
+        <ul>
+            <li>Calificaciones</li>
+            <li>Listados de estudiantes</li>
+            <li>Reportes académicos</li>
+            <li>Archivos exportados</li>
+            <li>Respaldos generados</li>
+            <li>Información institucional</li>
+        </ul>
+
+    </div>
+
+    <!-- FOTOGRAFIAS -->
+
+    <div class="section warning">
+
+        <h2>Manejo de Fotografías de Estudiantes</h2>
+
+        <p>
+            <strong>Importante:</strong> El usuario o institución educativa es completamente responsable del uso y administración de fotografías de estudiantes dentro de la plataforma.
+        </p>
+
+        <p>
+            Las fotografías deben utilizarse únicamente con fines académicos, administrativos o institucionales y conforme a las políticas internas del establecimiento educativo correspondiente.
+        </p>
+
+        <p>
+            Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de almacenar o utilizar imágenes de estudiantes dentro de la aplicación.
+        </p>
+
+        <p>
+            El desarrollador de Control Docente GT no recopila, distribuye ni comercializa fotografías de estudiantes y no se responsabiliza por usos indebidos realizados por terceros.
+        </p>
+
+    </div>
+
+    <!-- DISPONIBILIDAD -->
+
+    <div class="section">
+
+        <h2>Disponibilidad del Servicio</h2>
+
+        <p>
+            Aunque se realizan esfuerzos razonables para mantener el correcto funcionamiento de la aplicación, no se garantiza disponibilidad ininterrumpida ni ausencia total de errores técnicos.
+        </p>
+
+        <p>
+            El desarrollador podrá realizar actualizaciones, mejoras o modificaciones sin previo aviso.
+        </p>
+
+    </div>
+
+    <!-- LIMITACION -->
+
+    <div class="section">
+
+        <h2>Limitación de Responsabilidad</h2>
+
+        <p>
+            El desarrollador no será responsable por pérdidas de información, interrupciones del servicio, daños indirectos o consecuencias derivadas del uso incorrecto de la plataforma.
+        </p>
+
+        <p>
+            El usuario reconoce que utiliza la aplicación bajo su propia responsabilidad.
+        </p>
+
+    </div>
+
+    <!-- MODIFICACIONES -->
+
+    <div class="section">
+
+        <h2>Modificaciones de los Términos</h2>
+
+        <p>
+            Estos Términos y Condiciones pueden actualizarse periódicamente para adaptarse a cambios técnicos, legales o funcionales relacionados con la aplicación.
+        </p>
+
+    </div>
+
+    <!-- CONTACTO -->
+
+    <div class="section">
+
+        <h2>Contacto</h2>
+
+        <p>
+            Para consultas relacionadas con los presentes Términos y Condiciones:
+        </p>
+
+        <p>
+            <strong>controldocentegt@gmail.com</strong>
+        </p>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <p>
+            © 2026 Control Docente GT
+        </p>
+
+        <div class="dev">
+
+            <img src="Desarrollador%20(2).png"
+                 alt="ProfeTools GT"
+                 class="dev-logo">
+
+            <span>
+                Desarrollado por ProfeTools GT
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
