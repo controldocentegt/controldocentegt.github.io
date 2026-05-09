@@ -1,1 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privacidad y Seguridad | Control Docente GT</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    display:flex;
+    min-height:100vh;
+}
+
+/* =========================
+   MENU LATERAL
+========================= */
+
+.sidebar{
+    width:260px;
+    background:#0d47a1;
+    color:white;
+    padding:25px 20px;
+    border-right:4px solid #1565c0;
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    height:100%;
+}
+
+.sidebar h2{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.sidebar p{
+    font-size:14px;
+    opacity:0.9;
+    margin-bottom:30px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,0.12);
+    padding:12px;
+    border-radius:8px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    background:white;
+    color:#0d47a1;
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:40px;
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.hero-banner{
+    margin-bottom:25px;
+}
+
+.banner-img{
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    object-fit:cover;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:white;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    margin-bottom:30px;
+}
+
+.hero-top{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.app-logo{
+    width:120px;
+    height:120px;
+    border-radius:20px;
+    object-fit:cover;
+    border:4px solid #1565c0;
+    background:#e3f2fd;
+}
+
+.hero h1{
+    color:#0d47a1;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    line-height:1.8;
+    margin-top:10px;
+    font-size:17px;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.section h2{
+    color:#1565c0;
+    margin-bottom:18px;
+}
+
+.section p{
+    line-height:1.9;
+    margin-bottom:15px;
+}
+
+.section ul{
+    padding-left:22px;
+    line-height:2;
+}
+
+/* =========================
+   BLOQUES IMPORTANTES
+========================= */
+
+.highlight{
+    background:#e8f0fe;
+    border-left:6px solid #1565c0;
+}
+
+.warning{
+    background:#fff8e1;
+    border-left:6px solid #ffb300;
+}
+
+.warning strong{
+    color:#bf360c;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:40px;
+    text-align:center;
+    padding:25px;
+    color:#666;
+    font-size:14px;
+}
+
+.dev{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+
+.dev-logo{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    body{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     MENU LATERAL
+========================= -->
+
+<div class="sidebar">
+
+    <h2>Control Docente GT</h2>
+
+    <p>
+        Plataforma educativa y administrativa.
+    </p>
+
+    <div class="menu">
+
+        <a href="index.html">Inicio</a>
+
+        <a href="privacidad.html">
+            Política de Privacidad
+        </a>
+
+        <a href="terminos.html">
+            Condiciones del Servicio
+        </a>
+
+        <a href="seguridad.html">
+            Privacidad y Seguridad
+        </a>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     CONTENIDO
+========================= -->
+
+<div class="main">
+
+    <!-- ENCABEZADO -->
+
+    <div class="hero-banner">
+
+        <img src="Encabezado%20(1).png"
+             alt="Encabezado"
+             class="banner-img">
+
+    </div>
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="hero-top">
+
+            <img src="Control%20Docente%20GT%20(2).png"
+                 alt="Logo App"
+                 class="app-logo">
+
+            <div>
+
+                <h1>Privacidad y Seguridad</h1>
+
+                <p>
+                    Información relacionada con protección de datos, acceso seguro y manejo responsable de información académica dentro de Control Docente GT.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INTRODUCCION -->
+
+    <div class="section">
+
+        <h2>Compromiso de Seguridad</h2>
+
+        <p>
+            Control Docente GT ha sido desarrollado con el objetivo de proporcionar una plataforma educativa y administrativa segura, eficiente y orientada a la protección de la información académica gestionada por docentes e instituciones educativas.
+        </p>
+
+        <p>
+            La aplicación implementa medidas razonables de seguridad para reducir riesgos de acceso no autorizado, pérdida de información o uso indebido de datos almacenados por el usuario.
+        </p>
+
+    </div>
+
+    <!-- AUTENTICACION -->
+
+    <div class="section highlight">
+
+        <h2>Autenticación Segura</h2>
+
+        <p>
+            La aplicación utiliza autenticación segura mediante Google Sign-In para permitir acceso controlado a funciones específicas relacionadas con respaldos y almacenamiento de información académica.
+        </p>
+
+        <p>
+            Las credenciales de acceso del usuario son administradas directamente por Google mediante mecanismos oficiales de autenticación OAuth y no son almacenadas manualmente por el desarrollador de la aplicación.
+        </p>
+
+    </div>
+
+    <!-- GOOGLE DRIVE -->
+
+    <div class="section">
+
+        <h2>Integración con Google Drive</h2>
+
+        <p>
+            Control Docente GT utiliza Google Drive únicamente para funciones relacionadas con respaldos, exportación y almacenamiento de archivos generados directamente por el usuario.
+        </p>
+
+        <p>
+            El acceso solicitado se limita exclusivamente a los permisos necesarios para el funcionamiento de dichas herramientas.
+        </p>
+
+        <p>
+            La aplicación no accede, modifica ni comparte archivos personales ajenos al funcionamiento académico o administrativo de la plataforma.
+        </p>
+
+    </div>
+
+    <!-- DATOS ACADEMICOS -->
+
+    <div class="section">
+
+        <h2>Protección de Información Académica</h2>
+
+        <p>
+            La aplicación puede gestionar información académica y administrativa ingresada manualmente por el usuario, incluyendo:
+        </p>
+
+        <ul>
+            <li>Listados de estudiantes</li>
+            <li>Calificaciones y actividades</li>
+            <li>Consolidado académico</li>
+            <li>Grados y secciones</li>
+            <li>Exportaciones académicas</li>
+            <li>Respaldos generados por el usuario</li>
+        </ul>
+
+        <p>
+            Esta información es administrada bajo responsabilidad directa del usuario o institución educativa que utilice la plataforma.
+        </p>
+
+    </div>
+
+    <!-- ALMACENAMIENTO -->
+
+    <div class="section">
+
+        <h2>Almacenamiento Local y Respaldos</h2>
+
+        <p>
+            Parte de la información utilizada por la aplicación puede almacenarse localmente en el dispositivo del usuario con fines de funcionamiento, rendimiento y recuperación de información académica.
+        </p>
+
+        <p>
+            Los respaldos y exportaciones son generados únicamente bajo acciones iniciadas por el usuario.
+        </p>
+
+    </div>
+
+    <!-- FOTOGRAFIAS -->
+
+    <div class="section warning">
+
+        <h2>Manejo de Fotografías de Estudiantes</h2>
+
+        <p>
+            <strong>Importante:</strong> El uso, almacenamiento o administración de fotografías de estudiantes dentro de la plataforma es responsabilidad exclusiva de cada usuario o institución educativa.
+        </p>
+
+        <p>
+            Las fotografías deben utilizarse únicamente con fines académicos, administrativos o de identificación institucional conforme a las políticas internas del establecimiento educativo correspondiente.
+        </p>
+
+        <p>
+            Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de utilizar imágenes de estudiantes dentro de la aplicación.
+        </p>
+
+        <p>
+            El desarrollador de Control Docente GT no recopila, distribuye ni comercializa fotografías de estudiantes y no se responsabiliza por usos indebidos realizados por terceros.
+        </p>
+
+    </div>
+
+    <!-- RESPONSABILIDAD -->
+
+    <div class="section">
+
+        <h2>Responsabilidad del Usuario</h2>
+
+        <p>
+            El usuario es responsable de:
+        </p>
+
+        <ul>
+            <li>La administración de la información ingresada</li>
+            <li>La seguridad de sus dispositivos y cuentas</li>
+            <li>El cumplimiento de normativas legales aplicables</li>
+            <li>El manejo responsable de datos académicos y fotografías</li>
+        </ul>
+
+    </div>
+
+    <!-- LIMITACIONES -->
+
+    <div class="section">
+
+        <h2>Limitaciones de Seguridad</h2>
+
+        <p>
+            Aunque se implementan medidas razonables de protección, ningún sistema digital puede garantizar seguridad absoluta o disponibilidad ininterrumpida.
+        </p>
+
+        <p>
+            El usuario reconoce y acepta los riesgos inherentes al uso de plataformas tecnológicas y servicios digitales.
+        </p>
+
+    </div>
+
+    <!-- ACTUALIZACIONES -->
+
+    <div class="section">
+
+        <h2>Actualizaciones</h2>
+
+        <p>
+            Esta sección de Privacidad y Seguridad puede actualizarse periódicamente para reflejar mejoras técnicas, cambios funcionales o nuevos requisitos legales relacionados con la aplicación.
+        </p>
+
+    </div>
+
+    <!-- CONTACTO -->
+
+    <div class="section">
+
+        <h2>Contacto</h2>
+
+        <p>
+            Para consultas relacionadas con privacidad, seguridad o funcionamiento de la aplicación:
+        </p>
+
+        <p>
+            <strong>controldocentegt@gmail.com</strong>
+        </p>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <p>
+            © 2026 Control Docente GT
+        </p>
+
+        <div class="dev">
+
+            <img src="Desarrollador%20(2).png"
+                 alt="ProfeTools GT"
+                 class="dev-logo">
+
+            <span>
+                Desarrollado por ProfeTools GT
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
