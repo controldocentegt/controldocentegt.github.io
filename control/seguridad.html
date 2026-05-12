@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Términos y Condiciones | Control Docente GT</title>
+<title>Privacidad y Seguridad | Control Docente GT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -84,7 +84,7 @@ body {
 .app-logo { width: 100px; height: 100px; border-radius: 18px; object-fit: cover; border: 3px solid var(--azul-claro); box-shadow: 0 4px 16px rgba(13,71,161,0.15); flex-shrink: 0; }
 
 .hero-text h1 { font-family: 'Merriweather Sans', sans-serif; color: var(--azul); font-size: 32px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
-.hero-text .badge { display: inline-block; background: var(--azul-claro); color: var(--azul-med); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-top: 8px; }
+.hero-text p { font-size: 15px; color: var(--texto-suave); line-height: 1.6; margin-top: 8px; max-width: 560px; }
 
 .section { background: var(--blanco); border-radius: var(--radio); padding: 30px 34px; margin-bottom: 22px; box-shadow: var(--sombra); }
 
@@ -97,8 +97,6 @@ body {
 
 .section p { line-height: 1.85; margin-bottom: 14px; font-size: 15px; color: var(--texto); }
 .section p:last-child { margin-bottom: 0; }
-.section ul { padding-left: 20px; line-height: 2.1; font-size: 15px; }
-.section ul li { margin-bottom: 2px; }
 
 .section.warning { background: #fffbf0; border-left: 5px solid var(--amarillo); }
 .section.warning h2::before { background: var(--amarillo); }
@@ -106,43 +104,38 @@ body {
 
 .section.info { background: #eef4ff; border-left: 5px solid var(--acento); }
 
-.section.green { background: #f1f8f1; border-left: 5px solid #43a047; }
-.section.green h2::before { background: #43a047; }
-
-/* Cláusulas numeradas */
-.clause-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px; height: 28px;
-  background: var(--azul);
-  color: white;
-  border-radius: 50%;
-  font-size: 13px;
-  font-weight: 800;
-  flex-shrink: 0;
+/* Tarjetas de seguridad */
+.security-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
 }
 
-.numbered-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
+.sec-card {
+  border-radius: 12px;
+  padding: 18px 16px;
+  border: 1.5px solid rgba(13,71,161,0.1);
 }
 
-.numbered-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 15px;
-  line-height: 1.6;
-}
+.sec-card .sc-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.sec-card .sc-title { font-weight: 800; color: var(--azul); font-size: 14px; margin-bottom: 6px; }
+.sec-card .sc-desc { font-size: 13px; color: var(--texto-suave); line-height: 1.55; }
 
-.check-list { list-style: none; padding: 0; }
-.check-list li { padding: 6px 0; font-size: 15px; display: flex; align-items: flex-start; gap: 10px; }
-.check-list li::before { content: '✓'; color: var(--acento); font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+.sec-card.c1 { background: #e8f5e9; border-color: #a5d6a7; }
+.sec-card.c2 { background: #e3f2fd; border-color: #90caf9; }
+.sec-card.c3 { background: #f3e5f5; border-color: #ce93d8; }
+.sec-card.c4 { background: #fff8e1; border-color: #ffe082; }
+
+/* Responsabilidades */
+.resp-list { list-style: none; padding: 0; margin-top: 10px; }
+.resp-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+  font-size: 15px; line-height: 1.5;
+}
+.resp-list li:last-child { border-bottom: none; }
+.resp-list li .rl-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
 
 .contact-email {
   display: inline-flex; align-items: center; gap: 8px;
@@ -165,6 +158,11 @@ body {
   .hero { padding: 24px; gap: 18px; }
   .hero-text h1 { font-size: 24px; }
   .section { padding: 22px 20px; }
+  .security-cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media(max-width:500px) {
+  .security-cards { grid-template-columns: 1fr; }
 }
 
 </style>
@@ -173,7 +171,7 @@ body {
 
 <div class="sidebar">
   <div class="sidebar-brand">
-    <img src="Control%20Docente%20GT%20(2).png" alt="Logo">
+    <img src="../Control%20Docente%20GT%20(2).png" alt="Logo">
     <h2>Control Docente GT</h2>
   </div>
   <p class="sidebar-sub">Plataforma educativa y administrativa para docentes e instituciones.</p>
@@ -181,12 +179,12 @@ body {
   <nav class="menu">
     <a href="index.html"><span class="icon">🏠</span> Inicio</a>
     <a href="privacidad.html"><span class="icon">🔒</span> Política de Privacidad</a>
-    <a href="terminos.html" class="active"><span class="icon">📄</span> Condiciones del Servicio</a>
-    <a href="seguridad.html"><span class="icon">🛡️</span> Privacidad y Seguridad</a>
+    <a href="terminos.html"><span class="icon">📄</span> Condiciones del Servicio</a>
+    <a href="seguridad.html" class="active"><span class="icon">🛡️</span> Privacidad y Seguridad</a>
     <a href="eliminacion-datos.html"><span class="icon">🗑️</span> Eliminación de Datos</a>
   </nav>
   <div class="sidebar-footer">
-    <img src="Desarrollador%20(2).png" alt="ProfeTools GT">
+    <img src="../Desarrollador%20(2).png" alt="ProfeTools GT">
     <span>ProfeTools GT</span>
   </div>
 </div>
@@ -198,97 +196,100 @@ body {
   </div>
 
   <div class="hero">
-    <img src="Control%20Docente%20GT%20(2).png" alt="Logo App" class="app-logo">
+    <img src="../Control%20Docente%20GT%20(2).png" alt="Logo App" class="app-logo">
     <div class="hero-text">
-      <h1>Términos y Condiciones</h1>
-      <span class="badge">🗓 Última actualización: Mayo 2026</span>
+      <h1>Privacidad y Seguridad</h1>
+      <p>Información sobre protección de datos, acceso seguro y manejo responsable de la información académica dentro de Control Docente GT.</p>
+    </div>
+  </div>
+
+  <!-- MEDIDAS CLAVE EN TARJETAS -->
+  <div class="section">
+    <h2>Medidas de Seguridad Implementadas</h2>
+    <p>Control Docente GT ha sido desarrollado con el objetivo de proporcionar una plataforma educativa segura, eficiente y orientada a la protección de la información académica.</p>
+
+    <div class="security-cards">
+      <div class="sec-card c1">
+        <span class="sc-icon">🔐</span>
+        <div class="sc-title">Autenticación OAuth</div>
+        <div class="sc-desc">Acceso protegido mediante Google Sign-In con protocolos OAuth oficiales.</div>
+      </div>
+      <div class="sec-card c2">
+        <span class="sc-icon">☁️</span>
+        <div class="sc-title">Google Drive Seguro</div>
+        <div class="sc-desc">Respaldos y exportaciones almacenadas directamente en la cuenta del usuario.</div>
+      </div>
+      <div class="sec-card c3">
+        <span class="sc-icon">📱</span>
+        <div class="sc-title">Almacenamiento Local</div>
+        <div class="sc-desc">Los datos pueden guardarse localmente en el dispositivo del usuario.</div>
+      </div>
+      <div class="sec-card c4">
+        <span class="sc-icon">⚙️</span>
+        <div class="sc-title">Permisos Mínimos</div>
+        <div class="sc-desc">Solo se solicitan los permisos estrictamente necesarios para el funcionamiento.</div>
+      </div>
     </div>
   </div>
 
   <div class="section info">
-    <h2>Aceptación de los Términos</h2>
-    <p>Al utilizar Control Docente GT, el usuario acepta los presentes Términos y Condiciones de uso. Si el usuario no está de acuerdo con alguno de los términos establecidos, deberá abstenerse de utilizar la aplicación y sus servicios relacionados.</p>
+    <h2>Autenticación Segura</h2>
+    <p>La aplicación utiliza autenticación segura mediante Google Sign-In para permitir acceso controlado a funciones específicas relacionadas con respaldos y almacenamiento de información académica.</p>
+    <p>Las credenciales de acceso del usuario son administradas directamente por Google mediante mecanismos oficiales OAuth y no son almacenadas manualmente por el desarrollador de la aplicación.</p>
   </div>
 
   <div class="section">
-    <h2>Descripción de la Plataforma</h2>
-    <p>Control Docente GT es una plataforma educativa y administrativa diseñada para apoyar procesos académicos y de organización escolar dentro de instituciones educativas. Entre sus funciones se incluyen:</p>
-    <ul class="check-list">
-      <li>Gestión de estudiantes y grupos</li>
-      <li>Registro de calificaciones y actividades</li>
-      <li>Generación de reportes académicos</li>
-      <li>Exportación de información en Excel y PDF</li>
-      <li>Respaldos y almacenamiento de archivos</li>
-      <li>Herramientas de organización docente</li>
-    </ul>
-  </div>
-
-  <div class="section green">
-    <h2>Uso Adecuado de la Aplicación</h2>
-    <p>El usuario se compromete a utilizar la plataforma de forma responsable, ética y conforme a las leyes y normativas aplicables en su región o institución educativa.</p>
-    <p>Queda prohibido utilizar la aplicación para actividades ilícitas, fraudulentas o que vulneren derechos de terceros.</p>
+    <h2>Integración con Google Drive</h2>
+    <p>Control Docente GT utiliza Google Drive únicamente para funciones relacionadas con respaldos, exportación y almacenamiento de archivos generados directamente por el usuario.</p>
+    <p>El acceso solicitado se limita exclusivamente a los permisos necesarios para el funcionamiento de dichas herramientas. La aplicación no accede, modifica ni comparte archivos personales ajenos al funcionamiento académico de la plataforma.</p>
   </div>
 
   <div class="section">
-    <h2>Cuenta de Google y Autenticación</h2>
-    <p>Algunas funciones de la plataforma requieren autenticación mediante Google Sign-In para permitir respaldos, almacenamiento y exportación de información académica.</p>
-    <p>El usuario es responsable de mantener la seguridad de su cuenta de Google y de las actividades realizadas mediante dicha cuenta dentro de la plataforma.</p>
-  </div>
-
-  <div class="section info">
-    <h2>Uso de Google Drive</h2>
-    <p>La integración con Google Drive se utiliza exclusivamente para respaldos y almacenamiento de archivos generados directamente por el usuario dentro de la aplicación.</p>
-    <p>Control Docente GT no accede ni modifica archivos personales ajenos al funcionamiento de la plataforma.</p>
-  </div>
-
-  <div class="section">
-    <h2>Responsabilidad sobre la Información</h2>
-    <p>El usuario es responsable de la información ingresada, almacenada o administrada dentro de la aplicación. Esto incluye:</p>
-    <ul class="check-list">
-      <li>Calificaciones y actividades académicas</li>
-      <li>Listados de estudiantes</li>
-      <li>Reportes académicos generados</li>
-      <li>Archivos exportados</li>
-      <li>Respaldos creados</li>
-      <li>Información institucional</li>
-    </ul>
+    <h2>Protección de Información Académica</h2>
+    <p>La aplicación puede gestionar información académica y administrativa ingresada manualmente por el usuario. Esta información es administrada bajo responsabilidad directa del usuario o institución educativa que utilice la plataforma.</p>
+    <p>Los respaldos y exportaciones son generados únicamente bajo acciones iniciadas por el usuario, garantizando control total sobre sus datos.</p>
   </div>
 
   <div class="section warning">
     <h2>Manejo de Fotografías de Estudiantes</h2>
-    <p><strong>Importante:</strong> El usuario o institución educativa es completamente responsable del uso y administración de fotografías de estudiantes dentro de la plataforma.</p>
-    <p>Las fotografías deben utilizarse únicamente con fines académicos, administrativos o institucionales y conforme a las políticas internas del establecimiento educativo correspondiente.</p>
-    <p>Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de almacenar o utilizar imágenes de estudiantes dentro de la aplicación.</p>
+    <p><strong>Importante:</strong> El uso, almacenamiento o administración de fotografías de estudiantes dentro de la plataforma es responsabilidad exclusiva de cada usuario o institución educativa.</p>
+    <p>Las fotografías deben utilizarse únicamente con fines académicos, administrativos o de identificación institucional conforme a las políticas internas del establecimiento educativo correspondiente.</p>
+    <p>Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de utilizar imágenes de estudiantes dentro de la aplicación.</p>
     <p>El desarrollador de Control Docente GT no recopila, distribuye ni comercializa fotografías de estudiantes y no se responsabiliza por usos indebidos realizados por terceros.</p>
   </div>
 
   <div class="section">
-    <h2>Disponibilidad del Servicio</h2>
-    <p>Aunque se realizan esfuerzos razonables para mantener el correcto funcionamiento de la aplicación, no se garantiza disponibilidad ininterrumpida ni ausencia total de errores técnicos.</p>
-    <p>El desarrollador podrá realizar actualizaciones, mejoras o modificaciones sin previo aviso con el objetivo de mejorar la experiencia del usuario.</p>
+    <h2>Responsabilidad del Usuario</h2>
+    <p>El correcto uso de la plataforma recae en el usuario. Esto incluye:</p>
+    <ul class="resp-list">
+      <li><span class="rl-icon">📋</span> La administración responsable de la información académica ingresada</li>
+      <li><span class="rl-icon">🔑</span> La seguridad de sus dispositivos y cuentas de acceso</li>
+      <li><span class="rl-icon">⚖️</span> El cumplimiento de normativas legales aplicables en su región</li>
+      <li><span class="rl-icon">📸</span> El manejo responsable de datos académicos y fotografías de estudiantes</li>
+    </ul>
   </div>
 
   <div class="section">
-    <h2>Limitación de Responsabilidad</h2>
-    <p>El desarrollador no será responsable por pérdidas de información, interrupciones del servicio, daños indirectos o consecuencias derivadas del uso incorrecto de la plataforma.</p>
-    <p>El usuario reconoce que utiliza la aplicación bajo su propia responsabilidad.</p>
+    <h2>Limitaciones de Seguridad</h2>
+    <p>Aunque se implementan medidas razonables de protección, ningún sistema digital puede garantizar seguridad absoluta o disponibilidad ininterrumpida.</p>
+    <p>El usuario reconoce y acepta los riesgos inherentes al uso de plataformas tecnológicas y servicios digitales.</p>
   </div>
 
   <div class="section">
-    <h2>Modificaciones de los Términos</h2>
-    <p>Estos Términos y Condiciones pueden actualizarse periódicamente para adaptarse a cambios técnicos, legales o funcionales relacionados con la aplicación. Se recomienda revisar esta página periódicamente.</p>
+    <h2>Actualizaciones</h2>
+    <p>Esta sección de Privacidad y Seguridad puede actualizarse periódicamente para reflejar mejoras técnicas, cambios funcionales o nuevos requisitos legales relacionados con la aplicación.</p>
   </div>
 
   <div class="section">
     <h2>Contacto</h2>
-    <p>Para consultas relacionadas con los presentes Términos y Condiciones:</p>
+    <p>Para consultas relacionadas con privacidad, seguridad o funcionamiento de la aplicación:</p>
     <a href="mailto:controldocentegt@gmail.com" class="contact-email">✉️ controldocentegt@gmail.com</a>
   </div>
 
   <div class="footer">
     <p>© 2026 Control Docente GT. Todos los derechos reservados.</p>
     <div class="dev">
-      <img src="Desarrollador%20(2).png" alt="ProfeTools GT" class="dev-logo">
+      <img src="../Desarrollador%20(2).png" alt="ProfeTools GT" class="dev-logo">
       <span>Desarrollado por ProfeTools GT</span>
     </div>
   </div>

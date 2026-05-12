@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control Docente GT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --azul:       #0d47a1;
+  --azul-med:   #1565c0;
+  --azul-claro: #e3f2fd;
+  --acento:     #2979ff;
+  --fondo:      #f0f4fb;
+  --blanco:     #ffffff;
+  --texto:      #2c3e50;
+  --texto-suave:#607d8b;
+  --amarillo:   #ffb300;
+  --rojo-suave: #bf360c;
+  --sombra:     0 4px 20px rgba(13,71,161,0.10);
+  --radio:      16px;
+  --sidebar-w:  270px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ─────────────────────────────── */
+
+.sidebar {
+  width: var(--sidebar-w);
+  background: linear-gradient(175deg, #0a3880 0%, #1565c0 100%);
+  color: white;
+  padding: 32px 20px;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  box-shadow: 4px 0 24px rgba(13,71,161,0.18);
+  z-index: 100;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sidebar-brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.sidebar h2 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+.sidebar-sub {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 36px;
+  margin-top: 6px;
+  line-height: 1.5;
+  padding-left: 2px;
+}
+
+.menu-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.08);
+  padding: 11px 14px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.menu a:hover {
+  background: rgba(255,255,255,0.18);
+  color: white;
+  transform: translateX(3px);
+}
+
+.menu a.active {
+  background: white;
+  color: var(--azul);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.menu a .icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 12px;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-footer img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ── MAIN ─────────────────────────────────── */
+
+.main {
+  margin-left: var(--sidebar-w);
+  width: calc(100% - var(--sidebar-w));
+  padding: 36px 44px;
+}
+
+/* ── BANNER ───────────────────────────────── */
+
+.hero-banner {
+  margin-bottom: 28px;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.banner-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ── HERO CARD ────────────────────────────── */
+
+.hero {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 36px 40px;
+  box-shadow: var(--sombra);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  border-left: 5px solid var(--acento);
+}
+
+.app-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 3px solid var(--azul-claro);
+  box-shadow: 0 4px 16px rgba(13,71,161,0.15);
+  flex-shrink: 0;
+}
+
+.hero-text h1 {
+  font-family: 'Merriweather Sans', sans-serif;
+  color: var(--azul);
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero-text p {
+  line-height: 1.75;
+  font-size: 16px;
+  color: var(--texto-suave);
+  max-width: 640px;
+}
+
+/* ── SECCIONES ────────────────────────────── */
+
+.section {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 30px 34px;
+  margin-bottom: 22px;
+  box-shadow: var(--sombra);
+}
+
+.section h2 {
+  font-family: 'Merriweather Sans', sans-serif;
+  color: var(--azul-med);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: var(--acento);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.section p {
+  line-height: 1.85;
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: var(--texto);
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+.section ul {
+  padding-left: 20px;
+  line-height: 2;
+  font-size: 15px;
+}
+
+.section ul li { margin-bottom: 2px; }
+
+/* ── FEATURE GRID ─────────────────────────── */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.feature-item {
+  background: var(--azul-claro);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid rgba(13,71,161,0.08);
+}
+
+.feature-item .fi-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.feature-item .fi-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul);
+  line-height: 1.4;
+}
+
+/* ── VARIANTES ────────────────────────────── */
+
+.section.warning {
+  background: #fffbf0;
+  border-left: 5px solid var(--amarillo);
+}
+
+.section.warning h2::before { background: var(--amarillo); }
+
+.section.warning strong { color: var(--rojo-suave); }
+
+.section.info {
+  background: #eef4ff;
+  border-left: 5px solid var(--acento);
+}
+
+/* ── CONTACT CARD ─────────────────────────── */
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--azul-claro);
+  border: 1.5px solid rgba(13,71,161,0.18);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 700;
+  color: var(--azul);
+  font-size: 15px;
+  margin-top: 6px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.contact-email:hover {
+  background: var(--azul);
+  color: white;
+}
+
+/* ── FOOTER ───────────────────────────────── */
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 28px;
+  color: var(--texto-suave);
+  font-size: 13px;
+  border-top: 1px solid #dde6f3;
+}
+
+.dev {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+
+@media(max-width:900px) {
+  body { flex-direction: column; }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: 24px 20px;
+  }
+
+  .sidebar-footer { margin-top: 20px; }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 18px;
+  }
+
+  .hero { padding: 24px; gap: 18px; }
+  .hero-text h1 { font-size: 26px; }
+  .section { padding: 22px 20px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <div class="sidebar-brand">
+    <img src="../Control%20Docente%20GT%20(2).png" alt="Logo">
+    <h2>Control Docente GT</h2>
+  </div>
+
+  <p class="sidebar-sub">Plataforma educativa y administrativa para docentes e instituciones.</p>
+
+  <p class="menu-label">Navegación</p>
+
+  <nav class="menu">
+    <a href="index.html" class="active">
+      <span class="icon">🏠</span> Inicio
+    </a>
+    <a href="privacidad.html">
+      <span class="icon">🔒</span> Política de Privacidad
+    </a>
+    <a href="terminos.html">
+      <span class="icon">📄</span> Condiciones del Servicio
+    </a>
+    <a href="seguridad.html">
+      <span class="icon">🛡️</span> Privacidad y Seguridad
+    </a>
+    <a href="eliminacion-datos.html">
+      <span class="icon">🗑️</span> Eliminación de Datos
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <img src="../Desarrollador%20(2).png" alt="ProfeTools GT">
+    <span>ProfeTools GT</span>
+  </div>
+
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main">
+
+  <!-- BANNER -->
+  <div class="hero-banner">
+    <img src="../Encabezado%20(1).png" alt="Encabezado Control Docente GT" class="banner-img">
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="../Control%20Docente%20GT%20(2).png" alt="Logo Control Docente GT" class="app-logo">
+    <div class="hero-text">
+      <h1>Control Docente GT</h1>
+      <p>Sistema inteligente de gestión y control académico diseñado para facilitar el trabajo docente y administrativo en instituciones educativas guatemaltecas.</p>
+    </div>
+  </div>
+
+  <!-- SOBRE LA APP -->
+  <div class="section">
+    <h2>Sobre la Aplicación</h2>
+    <p>Control Docente GT permite administrar estudiantes, registrar calificaciones, generar reportes académicos, organizar grupos, exportar información y optimizar procesos escolares de manera eficiente y segura.</p>
+
+    <div class="feature-grid">
+      <div class="feature-item">
+        <span class="fi-icon">👥</span>
+        <span class="fi-text">Gestión de estudiantes y grupos</span>
+      </div>
+      <div class="feature-item">
+        <span class="fi-icon">📝</span>
+        <span class="fi-text">Registro de notas y actividades</span>
+      </div>
+      <div class="feature-item">
+        <span class="fi-icon">📊</span>
+        <span class="fi-text">Exportación en Excel y PDF</span>
+      </div>
+      <div class="feature-item">
+        <span class="fi-icon">🗓️</span>
+        <span class="fi-text">Consolidado académico por bimestre</span>
+      </div>
+      <div class="feature-item">
+        <span class="fi-icon">💾</span>
+        <span class="fi-text">Respaldo y organización de información</span>
+      </div>
+      <div class="feature-item">
+        <span class="fi-icon">☁️</span>
+        <span class="fi-text">Integración con Google Drive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOOGLE DRIVE -->
+  <div class="section info">
+    <h2>Uso de Google Drive</h2>
+    <p>La aplicación utiliza Google Drive únicamente para respaldos, exportaciones y almacenamiento de archivos generados directamente por el usuario dentro de la plataforma.</p>
+    <p>Control Docente GT no accede, modifica ni comparte archivos personales ajenos al funcionamiento de la aplicación.</p>
+  </div>
+
+  <!-- PRIVACIDAD -->
+  <div class="section">
+    <h2>Privacidad y Seguridad</h2>
+    <p>Control Docente GT implementa autenticación segura mediante Google Sign-In para proteger el acceso a funciones relacionadas con respaldos y almacenamiento académico.</p>
+    <p>La aplicación solicita únicamente los permisos necesarios para el funcionamiento de herramientas específicas como exportaciones, respaldos y sincronización con Google Drive.</p>
+    <p>La información utilizada dentro de la plataforma no es vendida ni compartida con terceros y permanece bajo control del usuario o institución educativa.</p>
+  </div>
+
+  <!-- FOTOGRAFIAS -->
+  <div class="section warning">
+    <h2>Uso de Fotografías de Estudiantes</h2>
+    <p><strong>Importante:</strong> El uso, almacenamiento o administración de fotografías de estudiantes dentro de la plataforma es responsabilidad exclusiva del usuario o institución educativa.</p>
+    <p>Las imágenes deben utilizarse únicamente con fines académicos, administrativos o de identificación institucional conforme a las políticas internas del establecimiento educativo correspondiente.</p>
+    <p>Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de utilizar fotografías de estudiantes dentro de la aplicación.</p>
+    <p>El desarrollador de Control Docente GT no recopila, distribuye ni comercializa fotografías de estudiantes y no se responsabiliza por usos indebidos realizados por terceros.</p>
+  </div>
+
+  <!-- CONTACTO -->
+  <div class="section">
+    <h2>Contacto</h2>
+    <p>Para consultas relacionadas con la aplicación, privacidad o soporte técnico:</p>
+    <a href="mailto:controldocentegt@gmail.com" class="contact-email">
+      ✉️ controldocentegt@gmail.com
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>© 2026 Control Docente GT. Todos los derechos reservados.</p>
+    <div class="dev">
+      <img src="../Desarrollador%20(2).png" alt="ProfeTools GT" class="dev-logo">
+      <span>Desarrollado por ProfeTools GT</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
