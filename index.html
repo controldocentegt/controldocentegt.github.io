@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProfeTools GT | Innovación Digital para Docentes</title>
+    <title>ProfeTools GT | Ecosistema Educativo Avanzado</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-blue: #007bff;
-            --brand-cyan: #00d4ff;
-            --brand-dark: #0a1628;
-            --bg-light: #fdfdfd;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --glass: rgba(255, 255, 255, 0.85);
-            --shadow-premium: 0 15px 35px rgba(0, 123, 255, 0.1);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --brand-main: #0066ff;
+            --brand-dark: #0a0f18;
+            --brand-accent: #00f0ff;
+            --bg-base: #030712;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.06);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glow: 0 0 40px rgba(0, 102, 255, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -28,32 +30,60 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fff;
-            color: var(--text-main);
-            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* ── VIBRANT BACKGROUND ── */
-        .bg-vibrant {
+        /* ── DYNAMIC ANIMATED BACKGROUND ── */
+        .ambient-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
-            background: 
-                radial-gradient(circle at 10% 10%, rgba(0, 123, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 10%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 50% 90%, rgba(255, 179, 0, 0.05) 0%, transparent 40%);
-            filter: blur(60px);
+            overflow: hidden;
+            background: #030712;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: moveOrb 20s infinite alternate ease-in-out;
+        }
+        .orb-1 { width: 400px; height: 400px; background: #0066ff; top: -10%; left: -10%; }
+        .orb-2 { width: 500px; height: 500px; background: #8a2be2; bottom: -20%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 300px; height: 300px; background: #00f0ff; top: 40%; left: 40%; opacity: 0.3; animation-duration: 25s; }
+
+        @keyframes moveOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 100px) scale(1.2); }
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* ── LAYOUT & TYPOGRAPHY ── */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 24px;
+            background: var(--brand-accent);
+            border-radius: 4px;
         }
 
         /* ── NAVBAR ── */
@@ -61,323 +91,398 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 15px 0;
+            padding: 20px 0;
             z-index: 1000;
             transition: var(--transition);
         }
-
         nav.scrolled {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            padding: 10px 0;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-subtle);
         }
-
-        .nav-container {
+        .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .nav-logo {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
+            color: white;
+            font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            color: var(--brand-dark);
+            font-size: 1.2rem;
         }
-
-        .nav-logo img {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-
+        .brand img { width: 36px; border-radius: 8px; }
+        .nav-links { display: flex; gap: 32px; }
         .nav-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 14px;
-            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
+        .nav-links a:hover { color: white; }
 
-        /* ── HERO COMPACT ── */
+        /* ── HERO DENSE ── */
         .hero {
-            padding: 120px 0 60px;
-            text-align: center;
-            position: relative;
+            padding: 140px 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
-
-        .hero-logo {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 123, 255, 0.2);
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        .hero h1 {
-            font-size: 52px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
+        .hero-content h1 {
+            font-size: 4rem;
             line-height: 1.1;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-blue) 100%);
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 30px;
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 90%;
         }
-
-        /* ── COMPACT HUB ── */
-        .section-compact {
-            padding: 40px 0;
+        .stats-row {
+            display: flex;
+            gap: 32px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
         }
+        .stat { display: flex; flex-direction: column; }
+        .stat-num { font-size: 2.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: var(--brand-accent); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        /* ── HORIZONTAL APP CARDS ── */
+        .apps-container {
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
-
-        .card-tool {
-            background: white;
-            border-radius: 24px;
-            padding: 30px;
-            border: 1px solid rgba(0,123,255,0.08);
+        .app-card-h {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 24px;
+            align-items: center;
             text-decoration: none;
             color: inherit;
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            position: relative;
+            backdrop-filter: blur(10px);
         }
-
-        .card-tool:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,123,255,0.1);
-            border-color: var(--brand-blue);
+        .app-card-h:hover {
+            background: var(--surface-hover);
+            border-color: rgba(0, 102, 255, 0.4);
+            transform: translateX(10px);
+            box-shadow: var(--glow);
         }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: #f0f7ff;
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0,0,0,0.5);
             border-radius: 16px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
+            border: 1px solid var(--border-subtle);
         }
-
-        .card-tool h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .card-tool p {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .tool-footer {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--brand-blue);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .soon-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #f1f5f9;
-            padding: 4px 10px;
+        .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .app-info h3 { font-size: 1.5rem; margin-bottom: 6px; }
+        .app-info p { color: var(--text-secondary); font-size: 0.95rem; }
+        .app-action {
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
             border-radius: 100px;
-            font-size: 10px;
-            font-weight: 700;
-            color: #94a3b8;
-            text-transform: uppercase;
-        }
-
-        /* ── ABOUT MINI ── */
-        .about-mini {
-            background: var(--brand-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
             color: white;
-            border-radius: 32px;
-            padding: 50px;
-            margin: 40px 0;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 40px;
-            align-items: center;
+            white-space: nowrap;
+        }
+        .app-card-h:hover .app-action {
+            background: var(--brand-main);
+            border-color: var(--brand-main);
         }
 
-        .about-mini h2 { font-size: 32px; margin-bottom: 15px; }
-        .about-mini p { color: #cbd5e1; font-size: 16px; }
+        /* VARIANTS */
+        .app-card-h.soon { opacity: 0.6; cursor: default; }
+        .app-card-h.soon:hover { transform: none; box-shadow: none; border-color: var(--border-subtle); background: var(--surface); }
+        .badge { background: rgba(0, 240, 255, 0.1); color: var(--brand-accent); padding: 4px 10px; border-radius: 8px; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-left: 10px; vertical-align: middle; }
 
-        .about-stats {
+        /* ── GRID SECTIONS (RADIO & NEWS) ── */
+        .live-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+        
+        .radio-card {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+        .radio-card h3 { font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .pulse { width: 10px; height: 10px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); } }
+        
+        .radio-embed {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+        .radio-embed iframe { width: 100%; height: 100%; border: none; }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
-
-        .stat-item {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
+        .news-card {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
             border-radius: 20px;
-            text-align: center;
+            padding: 24px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-
-        .stat-item strong { display: block; font-size: 24px; color: var(--brand-cyan); }
-        .stat-item span { font-size: 12px; color: #94a3b8; }
+        .news-card:hover { background: var(--surface-hover); }
+        .news-tag { font-size: 0.75rem; color: var(--brand-accent); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 12px; display: block; }
+        .news-card h4 { font-size: 1.1rem; margin-bottom: 12px; line-height: 1.4; }
+        .news-date { font-size: 0.8rem; color: var(--text-secondary); }
 
         /* ── FOOTER ── */
         footer {
-            padding: 40px 0;
-            border-top: 1px solid #f1f5f9;
-            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+            padding: 60px 0 40px;
+            margin-top: 60px;
         }
+        .footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+        .footer-brand p { color: var(--text-secondary); margin-top: 12px; max-width: 300px; font-size: 0.9rem; }
+        .footer-links { display: flex; gap: 40px; }
+        .footer-col h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; margin-bottom: 16px; color: white; }
+        .footer-col a { display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; transition: var(--transition); }
+        .footer-col a:hover { color: var(--brand-accent); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
 
-        .footer-logo { width: 45px; border-radius: 10px; margin-bottom: 15px; }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; }
-        .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 13px; }
-        .copy { font-size: 12px; color: #94a3b8; }
-
-        /* ── ANIMATIONS ── */
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 120px; }
+            .hero-content h1 { font-size: 3rem; }
+            .live-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .about-mini { grid-template-columns: 1fr; padding: 30px; }
             .nav-links { display: none; }
+            .app-card-h { 
+                grid-template-columns: 1fr; 
+                text-align: left; 
+                gap: 16px; 
+                padding: 20px;
+            }
+            .app-action { text-align: center; }
+            .stats-row { flex-direction: column; gap: 20px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 40px; }
+            .footer-links { flex-direction: column; gap: 20px; }
         }
+
+        /* ── UTILS ── */
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <div class="bg-vibrant"></div>
+    <!-- FONDO VIVO -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
+    <!-- NAVBAR -->
     <nav id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="nav-logo">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand">
                 <img src="Desarrollador%20(2).png" alt="ProfeTools GT">
-                <span>ProfeTools GT</span>
+                ProfeTools GT
             </a>
             <div class="nav-links">
                 <a href="#aplicaciones">Aplicaciones</a>
-                <a href="#nosotros">Nosotros</a>
+                <a href="#novedades">Novedades</a>
+                <a href="#radio">Radio</a>
                 <a href="mailto:joseortiz@profetoolsgt.com">Soporte</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero container">
-        <img src="Desarrollador%20(2).png" alt="Logo ProfeTools GT" class="hero-logo">
-        <h1>Transformación Digital<br>para el Docente</h1>
-        <p>Potenciamos el aula guatemalteca con herramientas inteligentes que simplifican tu labor diaria.</p>
-        <img src="profetools-decorative.png" alt="Ecosistema ProfeTools GT" style="width: 100%; max-width: 800px; margin: 40px auto 0; border-radius: 24px; box-shadow: var(--shadow-premium); display: block;">
-    </header>
-
-    <section id="aplicaciones" class="container section-compact">
-        <div class="grid-3">
-            
-            <!-- CONTROL DOCENTE -->
-            <a href="control/index.html" class="card-tool reveal">
-                <div class="icon-box" style="background: transparent; padding: 0;">
-                    <img src="Control%20Docente%20GT%20(2).png" alt="Control Docente GT Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
-                </div>
-                <h3>Control Docente GT</h3>
-                <p>Gestión integral de notas, asistencia y reportes automatizados. El estándar para el docente organizado.</p>
-                <div class="tool-footer">Entrar a la plataforma →</div>
-            </a>
-
-            <!-- CONTROL ESTUDIANTIL -->
-            <div class="card-tool reveal">
-                <span class="soon-badge">Próximamente</span>
-                <div class="icon-box" style="background: transparent; padding: 0;">
-                    <img src="control-estudiantil-icon.png" alt="Control Estudiantil Icon" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
-                </div>
-                <h3>Control Estudiantil</h3>
-                <p>Portal interactivo para el seguimiento de conducta, méritos y comunicación directa con padres.</p>
-                <div class="tool-footer" style="color: #94a3b8;">En desarrollo</div>
-            </div>
-
-            <!-- PROFE PLANNER -->
-            <div class="card-tool reveal">
-                <span class="soon-badge">Próximamente</span>
-                <div class="icon-box" style="background: #ebfdf5;">📋</div>
-                <h3>Profe Planner</h3>
-                <p>Generador de planificaciones bimestrales alineadas al CNB. Organiza tus contenidos en minutos.</p>
-                <div class="tool-footer" style="color: #94a3b8;">Próximamente</div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="nosotros" class="container reveal">
-        <div class="about-mini">
-            <div>
-                <h2>Tecnología con propósito</h2>
-                <p>ProfeTools GT no es solo software, es un aliado en el aula. Diseñamos cada herramienta pensando en los retos reales del sistema educativo en Guatemala.</p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-item">
-                    <strong>+100%</strong>
-                    <span>Eficiencia</span>
-                </div>
-                <div class="stat-item">
-                    <strong>Seguro</strong>
-                    <span>En la nube</span>
+    <!-- HERO & APPS (DENSE LAYOUT) -->
+    <main class="container">
+        <section class="hero reveal">
+            <div class="hero-content">
+                <h1>El Hub Tecnológico<br>del Docente</h1>
+                <p>Centralizamos las mejores herramientas administrativas y educativas en un ecosistema seguro, rápido y diseñado para Guatemala.</p>
+                
+                <div class="stats-row">
+                    <div class="stat">
+                        <span class="stat-num counter" data-target="1450">0</span>
+                        <span class="stat-label">Docentes Activos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num counter" data-target="99">0</span>
+                        <span class="stat-label">% Uptime</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <div id="aplicaciones" class="apps-container">
+                <!-- CONTROL DOCENTE GT -->
+                <a href="control/index.html" class="app-card-h">
+                    <div class="app-icon">
+                        <img src="Control%20Docente%20GT%20(2).png" alt="Control Docente GT">
+                    </div>
+                    <div class="app-info">
+                        <h3>Control Docente GT <span class="badge">Activo</span></h3>
+                        <p>Gestión avanzada de notas, cuadros vivos, asistencia y reportes automatizados. El estándar en Guatemala.</p>
+                    </div>
+                    <div class="app-action">Abrir App →</div>
+                </a>
+
+                <!-- CONTROL ESTUDIANTIL -->
+                <div class="app-card-h soon">
+                    <div class="app-icon" style="background: #0a1628;">
+                        <img src="control-estudiantil-icon.png" alt="Control Estudiantil">
+                    </div>
+                    <div class="app-info">
+                        <h3>Control Estudiantil <span class="badge" style="background:rgba(255,255,255,0.1); color:#94a3b8;">Próximamente</span></h3>
+                        <p>Seguimiento disciplinario, méritos y comunicación directa con padres de familia en tiempo real.</p>
+                    </div>
+                    <div class="app-action" style="background: transparent; border-color: transparent; color: #64748b;">En Desarrollo</div>
+                </div>
+
+                <!-- PROFE PLANNER -->
+                <div class="app-card-h soon">
+                    <div class="app-icon" style="background: #0a1628; display:flex; align-items:center; justify-content:center; font-size:32px;">
+                        📋
+                    </div>
+                    <div class="app-info">
+                        <h3>Profe Planner <span class="badge" style="background:rgba(255,255,255,0.1); color:#94a3b8;">Próximamente</span></h3>
+                        <p>Generador inteligente de planificaciones bimestrales estructuradas y alineadas con el CNB.</p>
+                    </div>
+                    <div class="app-action" style="background: transparent; border-color: transparent; color: #64748b;">En Desarrollo</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIONES VIVAS (RADIO Y NOTICIAS) -->
+        <section class="live-grid reveal">
+            <!-- RADIO -->
+            <div id="radio" class="radio-card">
+                <h3><div class="pulse"></div> Música para Planificar</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">Sesión en vivo. Ideal para calificar exámenes y redactar planificaciones.</p>
+                <div class="radio-embed">
+                    <!-- Embed Lofi Girl Radio for atmosphere -->
+                    <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&mute=1&controls=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- NEWS -->
+            <div id="novedades" class="news-section">
+                <h2 class="section-title">Últimas Novedades</h2>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div>
+                            <span class="news-tag">Actualización</span>
+                            <h4>Control Docente GT mejora su motor de sincronización con Google Drive</h4>
+                        </div>
+                        <span class="news-date">Hace 2 días</span>
+                    </div>
+                    <div class="news-card">
+                        <div>
+                            <span class="news-tag">Comunidad</span>
+                            <h4>Nuevo canal de YouTube con tutoriales paso a paso para docentes</h4>
+                        </div>
+                        <span class="news-date">Hace 1 semana</span>
+                    </div>
+                    <div class="news-card">
+                        <div>
+                            <span class="news-tag">Desarrollo</span>
+                            <h4>Inician las pruebas cerradas del módulo 'Control Estudiantil'</h4>
+                        </div>
+                        <span class="news-date">Hace 2 semanas</span>
+                    </div>
+                    <div class="news-card">
+                        <div>
+                            <span class="news-tag">Educación</span>
+                            <h4>Tips: Cómo estructurar tus cuadros vivos eficientemente</h4>
+                        </div>
+                        <span class="news-date">Hace 1 mes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <img src="Desarrollador%20(2).png" alt="ProfeTools GT" class="footer-logo">
-            <div class="footer-links">
-                <a href="privacidad.html">Privacidad</a>
-                <a href="terminos.html">Términos</a>
-                <a href="seguridad.html">Seguridad</a>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="brand">
+                        <img src="Desarrollador%20(2).png" alt="ProfeTools GT">
+                        ProfeTools GT
+                    </a>
+                    <p>Potenciando la educación digital en Guatemala a través de código y diseño centrado en el docente.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h5>Plataforma</h5>
+                        <a href="#aplicaciones">Aplicaciones</a>
+                        <a href="#novedades">Novedades</a>
+                        <a href="mailto:joseortiz@profetoolsgt.com">Soporte Técnico</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Legal corporativo</h5>
+                        <a href="privacidad.html">Privacidad</a>
+                        <a href="terminos.html">Términos de Servicio</a>
+                        <a href="seguridad.html">Seguridad</a>
+                    </div>
+                </div>
             </div>
-            <p class="copy">© 2026 ProfeTools GT. Ecosistema de Innovación Educativa.</p>
+            <div class="footer-bottom">
+                &copy; 2026 ProfeTools GT. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script>
+        // Navbar Scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 30) nav.classList.add('scrolled');
+            if (window.scrollY > 20) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
 
+        // Scroll Reveal
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             reveals.forEach(el => {
@@ -387,6 +492,37 @@
         };
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        const animateCounters = () => {
+            if(animated) return;
+            const triggerBottom = window.innerHeight / 5 * 4;
+            const heroTop = document.querySelector('.hero').getBoundingClientRect().top;
+            
+            if(heroTop < triggerBottom) {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / 50;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 40);
+                        } else {
+                            counter.innerText = target + (target === 99 ? '%' : '+');
+                        }
+                    };
+                    updateCount();
+                });
+                animated = true;
+            }
+        };
+        window.addEventListener('scroll', animateCounters);
+        animateCounters(); // Check on load
     </script>
 </body>
 </html>
