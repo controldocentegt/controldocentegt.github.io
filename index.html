@@ -12,11 +12,11 @@
             --brand-blue: #007bff;
             --brand-cyan: #00d4ff;
             --brand-dark: #0a1628;
-            --bg-light: #f8fafc;
+            --bg-light: #fdfdfd;
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --glass: rgba(255, 255, 255, 0.8);
-            --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.05);
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow-premium: 0 15px 35px rgba(0, 123, 255, 0.1);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -29,40 +29,39 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-light);
+            background-color: #fff;
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* ── BACKGROUND DECORATION ── */
-        .bg-shapes {
+        /* ── VIBRANT BACKGROUND ── */
+        .bg-vibrant {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(0, 123, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(255, 179, 0, 0.05) 0%, transparent 40%);
+            filter: blur(60px);
         }
 
-        .shape {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.15;
-            border-radius: 50%;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-
-        .shape-1 { top: -10%; right: -5%; width: 500px; height: 500px; background: var(--brand-blue); }
-        .shape-2 { bottom: -10%; left: -5%; width: 400px; height: 400px; background: var(--brand-cyan); }
 
         /* ── NAVBAR ── */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 15px 0;
             z-index: 1000;
             transition: var(--transition);
         }
@@ -70,14 +69,11 @@
         nav.scrolled {
             background: var(--glass);
             backdrop-filter: blur(15px);
-            padding: 12px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 10px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -86,426 +82,306 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 20px;
             color: var(--brand-dark);
         }
 
         .nav-logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 24px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--brand-blue);
-        }
-
-        /* ── HERO ── */
+        /* ── HERO COMPACT ── */
         .hero {
-            padding: 180px 0 100px;
+            padding: 120px 0 60px;
             text-align: center;
+            position: relative;
         }
 
         .hero-logo {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 40px;
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(0, 123, 255, 0.15);
-            animation: float 6s ease-in-out infinite;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 123, 255, 0.2);
+            animation: float 5s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
         }
 
         .hero h1 {
-            font-size: 64px;
+            font-size: 52px;
             font-weight: 800;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 22px;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 48px;
-            font-weight: 400;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 16px 40px;
-            background: var(--brand-blue);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 100px;
             font-size: 18px;
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
-            transition: var(--transition);
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
-            background: #006ae6;
-        }
-
-        /* ── NOSOTROS ── */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-
-        .section-header h2 {
-            font-size: 40px;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
             color: var(--text-muted);
-            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
 
-        .about-grid {
+        /* ── COMPACT HUB ── */
+        .section-compact {
+            padding: 40px 0;
+        }
+
+        .grid-3 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        .about-card {
+        .card-tool {
             background: white;
-            padding: 40px;
-            border-radius: 32px;
-            box-shadow: var(--shadow-premium);
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-
-        .about-card h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: var(--brand-blue);
-        }
-
-        /* ── HERRAMIENTAS (HUB) ── */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .tool-box {
-            background: white;
-            border-radius: 32px;
-            padding: 48px;
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(0,123,255,0.08);
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
             position: relative;
-            overflow: hidden;
         }
 
-        .tool-box:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.06);
+        .card-tool:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,123,255,0.1);
+            border-color: var(--brand-blue);
         }
 
-        .tool-box::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, transparent, rgba(0, 123, 255, 0.05));
-            border-radius: 100px 0 0 0;
-        }
-
-        .tool-icon-circle {
-            width: 80px;
-            height: 80px;
-            background: #eef6ff;
-            border-radius: 24px;
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #f0f7ff;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 32px;
-            font-size: 36px;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
-        .tool-box h3 {
-            font-size: 28px;
-            margin-bottom: 16px;
+        .card-tool h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
-        .tool-box p {
+        .card-tool p {
+            font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 32px;
-            font-size: 16px;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
-        .tool-link {
+        .tool-footer {
+            font-size: 13px;
             font-weight: 700;
             color: var(--brand-blue);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
+
+        .soon-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        /* ── ABOUT MINI ── */
+        .about-mini {
+            background: var(--brand-dark);
+            color: white;
+            border-radius: 32px;
+            padding: 50px;
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-mini h2 { font-size: 32px; margin-bottom: 15px; }
+        .about-mini p { color: #cbd5e1; font-size: 16px; }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .stat-item strong { display: block; font-size: 24px; color: var(--brand-cyan); }
+        .stat-item span { font-size: 12px; color: #94a3b8; }
 
         /* ── FOOTER ── */
         footer {
-            background: var(--brand-dark);
-            color: white;
-            padding: 80px 0 40px;
-            margin-top: 100px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand img {
-            width: 60px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-        }
-
-        .footer-brand p {
-            color: #94a3b8;
-            max-width: 300px;
-        }
-
-        .footer-links h4 {
-            margin-bottom: 24px;
-            font-size: 18px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .copyright {
+            padding: 40px 0;
+            border-top: 1px solid #f1f5f9;
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #64748b;
-            font-size: 14px;
         }
 
-        /* ── ANIMATIONS ON SCROLL ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
+        .footer-logo { width: 45px; border-radius: 10px; margin-bottom: 15px; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 13px; }
+        .copy { font-size: 12px; color: #94a3b8; }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* ── ANIMATIONS ── */
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 44px; }
-            .about-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 36px; }
+            .about-mini { grid-template-columns: 1fr; padding: 30px; }
             .nav-links { display: none; }
         }
-
     </style>
 </head>
 <body>
 
-    <div class="bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-    </div>
+    <div class="bg-vibrant"></div>
 
     <nav id="navbar">
-        <div class="nav-container">
+        <div class="container nav-container">
             <a href="#" class="nav-logo">
                 <img src="Desarrollador%20(2).png" alt="ProfeTools GT">
                 <span>ProfeTools GT</span>
             </a>
             <div class="nav-links">
-                <a href="#nosotros">Nosotros</a>
                 <a href="#herramientas">Herramientas</a>
-                <a href="#contacto">Soporte</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="mailto:controldocentegt@gmail.com">Soporte</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <img src="Desarrollador%20(2).png" alt="ProfeTools GT Logo" class="hero-logo">
-            <h1>Ecosistema Digital para<br>Docentes de Guatemala</h1>
-            <p>Creamos herramientas inteligentes, seguras y personalizadas para facilitar la gestión académica y potenciar el aprendizaje.</p>
-            <a href="#herramientas" class="cta-button">Explorar Herramientas</a>
-        </div>
+    <header class="hero container">
+        <img src="Desarrollador%20(2).png" alt="Logo ProfeTools GT" class="hero-logo">
+        <h1>Transformación Digital<br>para el Docente</h1>
+        <p>Potenciamos el aula guatemalteca con herramientas inteligentes que simplifican tu labor diaria.</p>
     </header>
 
+    <section id="herramientas" class="container section-compact">
+        <div class="grid-3">
+            
+            <!-- CONTROL DOCENTE -->
+            <a href="control/index.html" class="card-tool reveal">
+                <div class="icon-box">🎓</div>
+                <h3>Control Docente GT</h3>
+                <p>Gestión integral de notas, asistencia y reportes automatizados. El estándar para el docente organizado.</p>
+                <div class="tool-footer">Entrar a la plataforma →</div>
+            </a>
+
+            <!-- CONTROL ESTUDIANTIL -->
+            <div class="card-tool reveal">
+                <span class="soon-badge">Próximamente</span>
+                <div class="icon-box" style="background: #fff8eb;">👥</div>
+                <h3>Control Estudiantil</h3>
+                <p>Portal interactivo para el seguimiento de conducta, méritos y comunicación directa con padres.</p>
+                <div class="tool-footer" style="color: #94a3b8;">En desarrollo</div>
+            </div>
+
+            <!-- PROFE PLANNER -->
+            <div class="card-tool reveal">
+                <span class="soon-badge">Próximamente</span>
+                <div class="icon-box" style="background: #ebfdf5;">📋</div>
+                <h3>Profe Planner</h3>
+                <p>Generador de planificaciones bimestrales alineadas al CNB. Organiza tus contenidos en minutos.</p>
+                <div class="tool-footer" style="color: #94a3b8;">Próximamente</div>
+            </div>
+
+        </div>
+    </section>
+
     <section id="nosotros" class="container reveal">
-        <div class="nav-container">
-            <div class="section-header">
-                <h2>Innovación con Propósito</h2>
-                <p>ProfeTools GT nace de la necesidad de modernizar las aulas guatemaltecas con soluciones que realmente entiendan el contexto local.</p>
+        <div class="about-mini">
+            <div>
+                <h2>Tecnología con propósito</h2>
+                <p>ProfeTools GT no es solo software, es un aliado en el aula. Diseñamos cada herramienta pensando en los retos reales del sistema educativo en Guatemala.</p>
             </div>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>Nuestra Misión</h3>
-                    <p>Empoderar al docente guatemalteco a través de tecnología intuitiva que reduzca la carga administrativa y permita enfocarse en lo más importante: la enseñanza.</p>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <strong>+100%</strong>
+                    <span>Eficiencia</span>
                 </div>
-                <div class="about-card">
-                    <h3>Nuestra Visión</h3>
-                    <p>Ser el estándar de innovación educativa en la región, ofreciendo un ecosistema de herramientas integradas que transformen la gestión escolar.</p>
+                <div class="stat-item">
+                    <strong>Seguro</strong>
+                    <span>En la nube</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="herramientas" class="container reveal">
-        <div class="nav-container">
-            <div class="section-header">
-                <h2>Nuestras Herramientas</h2>
-                <p>Soluciones diseñadas para cada necesidad del entorno educativo.</p>
-            </div>
-            <div class="tools-grid">
-                
-                <!-- CONTROL DOCENTE -->
-                <a href="control/index.html" class="tool-box">
-                    <div class="tool-icon-circle">🎓</div>
-                    <h3>Control Docente GT</h3>
-                    <p>El sistema líder para la gestión de notas, asistencia y reportes académicos automatizados. Diseñado específicamente para el sistema guatemalteco.</p>
-                    <div class="tool-link">Acceder a la herramienta →</div>
-                </a>
-
-                <!-- PROFE PLANNER -->
-                <div class="tool-box" style="opacity: 0.7; cursor: default;">
-                    <div class="tool-icon-circle" style="background: #f1f5f9;">📋</div>
-                    <h3>Profe Planner</h3>
-                    <p>Generador inteligente de planificaciones bimestrales alineadas al CNB. Organiza tus contenidos de forma rápida y profesional.</p>
-                    <div class="tool-link" style="color: #94a3b8;">Próximamente</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="container reveal">
-        <div class="nav-container">
-            <div class="about-card" style="text-align: center; max-width: 900px; margin: 0 auto; background: linear-gradient(135deg, #007bff, #00d4ff); color: white;">
-                <h2 style="color: white; margin-bottom: 20px;">¿Necesitas soporte técnico?</h2>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 30px; font-size: 18px;">Estamos aquí para ayudarte a sacar el máximo provecho de nuestras herramientas.</p>
-                <a href="mailto:controldocentegt@gmail.com" class="cta-button" style="background: white; color: var(--brand-blue); box-shadow: none;">Contactar Soporte</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="nav-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="Desarrollador%20(2).png" alt="ProfeTools GT">
-                    <p>Innovación tecnológica para la educación en Guatemala. Potenciando el futuro de nuestras aulas.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a href="#herramientas">Herramientas</a></li>
-                        <li><a href="control/privacidad.html">Privacidad</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="control/terminos.html">Términos de Uso</a></li>
-                        <li><a href="control/seguridad.html">Seguridad</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <img src="Desarrollador%20(2).png" alt="ProfeTools GT" class="footer-logo">
+            <div class="footer-links">
+                <a href="control/privacidad.html">Privacidad</a>
+                <a href="control/terminos.html">Términos</a>
+                <a href="control/seguridad.html">Seguridad</a>
             </div>
-            <div class="copyright">
-                © 2026 ProfeTools GT. Todos los derechos reservados.
-            </div>
+            <p class="copy">© 2026 ProfeTools GT. Ecosistema de Innovación Educativa.</p>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
-        // Reveal on scroll
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
                 const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    el.classList.add('active');
-                }
+                if (elementTop < window.innerHeight - 100) el.classList.add('active');
             });
         };
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
+        revealOnScroll();
     </script>
 </body>
 </html>
