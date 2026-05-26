@@ -50,7 +50,7 @@ body {
 
 .sidebar-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
 .sidebar-brand img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255,255,255,0.4); }
-.sidebar h2 { font-family: 'Merriweather Sans', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.3; }
+.sidebar h2 { font-family: 'Merriweather Sans', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.3; letter-spacing: -0.3px; white-space: nowrap; }
 .sidebar-sub { font-size: 12px; opacity: 0.75; margin-bottom: 36px; margin-top: 6px; line-height: 1.5; padding-left: 2px; }
 .menu-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.5; margin-bottom: 10px; padding-left: 4px; }
 
@@ -241,7 +241,7 @@ body {
   <div class="section">
     <h2>Integración con Google Drive</h2>
     <p>Control Docente GT utiliza Google Drive únicamente para funciones relacionadas con respaldos, exportación y almacenamiento de archivos generados directamente por el usuario.</p>
-    <p>El acceso solicitado se limita exclusivamente a los permisos necesarios para el funcionamiento de dichas herramientas. La aplicación no accede, modifica ni comparte archivos personales ajenos al funcionamiento académico de la plataforma.</p>
+    <p>El acceso solicitado (<strong>drive.metadata.readonly</strong>) se limita exclusivamente a leer los metadatos y marcas de tiempo (timestamps) de los archivos de respaldo para una sincronización segura y prevención de pérdida de datos. La aplicación no accede, modifica ni comparte archivos personales ajenos al funcionamiento académico de la plataforma.</p>
   </div>
 
   <div class="section">

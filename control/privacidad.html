@@ -65,9 +65,11 @@ body {
 
 .sidebar h2 {
   font-family: 'Merriweather Sans', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.3;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
 }
 
 .sidebar-sub {
@@ -336,9 +338,15 @@ body {
   </div>
 
   <div class="section info">
-    <h2>Uso de Google Drive</h2>
-    <p>Control Docente GT utiliza Google Drive únicamente para permitir respaldos, almacenamiento y exportación de archivos generados directamente por el usuario dentro de la aplicación.</p>
-    <p>La aplicación no accede, modifica ni comparte archivos personales ajenos al funcionamiento de la plataforma. El acceso solicitado a Google Drive se limita exclusivamente a las funciones necesarias para las herramientas de respaldo y exportación académica.</p>
+    <h2>Uso de Google Drive y Política de Datos de Google</h2>
+    <p><strong>Control Docente GT</strong> utiliza los servicios de la API de Google Drive para habilitar la funcionalidad de sincronización y respaldo de datos académicos del usuario.</p>
+    <p>Específicamente, la aplicación solicita acceso al alcance (scope) <strong>drive.metadata.readonly</strong> de Google Drive. Este permiso se utiliza de la siguiente manera:</p>
+    <ul>
+      <li><strong>Propósito:</strong> Leer exclusivamente los metadatos y las marcas de tiempo (timestamps) de los archivos de copia de seguridad del usuario almacenados en su propio espacio de Google Drive.</li>
+      <li><strong>Uso:</strong> Permite realizar una sincronización bidireccional inteligente y precisa entre múltiples dispositivos (hasta 3 por licencia). A través de las marcas de tiempo, el sistema determina cuál es la versión más reciente del registro escolar para evitar conflictos de sincronización, sobreescrituras accidentales o pérdida de información docente.</li>
+      <li><strong>Limitación:</strong> No se leen, recopilan, modifican, eliminan, transmiten ni comparten los contenidos ni archivos personales de los usuarios ajenos al funcionamiento operativo de la aplicación. Todo el procesamiento de datos ocurre de forma local y los respaldos residen únicamente en la cuenta personal de Google Drive de cada usuario.</li>
+    </ul>
+    <p style="margin-top: 10px;"><strong>Declaración de Cumplimiento de Políticas de Datos:</strong> El uso y la transferencia por parte de Control Docente GT de la información recibida de las APIs de Google a cualquier otra aplicación se adherirá a la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" style="color: var(--azul-med); font-weight: 700; text-decoration: underline;">Política de Datos del Usuario de los Servicios de Google API</a>, incluyendo sus requisitos de <strong>Uso Limitado (Limited Use Requirements)</strong>.</p>
   </div>
 
   <div class="section">

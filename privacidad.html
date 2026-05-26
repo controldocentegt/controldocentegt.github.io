@@ -95,16 +95,25 @@
             <li><strong>Datos analíticos anónimos:</strong> Información sobre cómo interactúas con nuestro portal para mejorar la experiencia del usuario.</li>
         </ul>
 
-        <h2>3. Manejo de Fotografías de Estudiantes</h2>
+        <h2>3. Integración con Google APIs (Control Docente GT)</h2>
+        <p>Nuestra aplicación principal, <strong>Control Docente GT</strong>, requiere interactuar con las APIs de Google para proporcionar sincronización en la nube y respaldos seguros. A continuación, detallamos el uso de esta integración:</p>
+        <ul>
+            <li><strong>Alcance solicitado (OAuth Scope):</strong> <code>drive.metadata.readonly</code> (Google Drive API).</li>
+            <li><strong>Propósito y funcionamiento:</strong> Este permiso se utiliza de manera exclusiva para leer los metadatos y las marcas de tiempo (timestamps) de los archivos de respaldo que el usuario crea dentro de su propia cuenta de Google Drive. Esto permite realizar una sincronización bidireccional inteligente y precisa entre múltiples dispositivos (hasta 3 por licencia), determinando cuál es la versión más reciente del registro escolar para evitar conflictos de sincronización o pérdida de información docente.</li>
+            <li><strong>Privacidad estricta:</strong> Control Docente GT no lee, modifica, elimina ni comparte ningún otro archivo o contenido personal en el Google Drive del usuario ajeno al funcionamiento de la propia aplicación. Todo el procesamiento de datos académicos ocurre de forma local y los respaldos se guardan únicamente en el espacio de almacenamiento del usuario en su cuenta de Google.</li>
+            <li><strong>Declaración de Cumplimiento de Políticas de Datos:</strong> El uso y la transferencia por parte de Control Docente GT de la información recibida de las APIs de Google a cualquier otra aplicación se adherirá a la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" style="color: var(--brand-blue); font-weight: 700; text-decoration: underline;">Política de Datos del Usuario de los Servicios de Google API</a>, incluyendo sus requisitos de <strong>Uso Limitado (Limited Use Requirements)</strong>.</li>
+        </ul>
+
+        <h2>4. Manejo de Fotografías de Estudiantes</h2>
         <p><strong>Importante:</strong> El uso, almacenamiento o administración de fotografías de estudiantes dentro de cualquier aplicación del ecosistema ProfeTools GT es responsabilidad exclusiva del usuario o institución educativa que utilice la plataforma.</p>
         <p>Las imágenes deben utilizarse únicamente con fines académicos, administrativos o de identificación institucional conforme a las políticas internas del establecimiento educativo correspondiente.</p>
         <p>Se recomienda enfáticamente obtener autorización previa de padres de familia, encargados o representantes legales antes de almacenar o utilizar fotografías de estudiantes dentro de nuestras aplicaciones.</p>
         <p>ProfeTools GT no recopila, distribuye ni comercializa fotografías de estudiantes en sus servidores centrales, y no se responsabiliza por el uso indebido realizado por terceros o usuarios de nuestras aplicaciones.</p>
 
-        <h2>4. Protección de Datos</h2>
+        <h2>5. Protección de Datos</h2>
         <p>Implementamos estrictas medidas de seguridad técnicas y organizativas para proteger tus datos contra accesos no autorizados, alteraciones o destrucción. No vendemos, alquilamos ni comercializamos tu información personal con terceros bajo ninguna circunstancia.</p>
 
-        <h2>5. Derechos del Usuario</h2>
+        <h2>6. Derechos del Usuario</h2>
         <p>Tienes derecho a acceder, rectificar o solicitar la eliminación de tu información personal de nuestros registros corporativos. Para ejercer estos derechos, contáctanos a nuestro correo de soporte oficial.</p>
 
         <a href="index.html" class="btn-back">← Volver al Portal Principal</a>
