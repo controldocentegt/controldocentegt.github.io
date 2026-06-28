@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos de Uso | ProfeTools Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-color: #f8fafc;
+  --surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #eff6ff;
+  --accent: #10b981;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --radius: 16px;
+  --sidebar-w: 280px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--bg-color); color:var(--text-main); display:flex; min-height:100vh; -webkit-font-smoothing:antialiased; }
+.sidebar { width:var(--sidebar-w); background:#0f172a; color:white; padding:32px 24px; display:flex; flex-direction:column; position:fixed; height:100%; box-shadow:4px 0 24px rgba(0,0,0,0.05); z-index:100; }
+.sidebar-brand { display:flex; align-items:center; gap:14px; margin-bottom:10px; }
+.sidebar-brand img { width:48px; height:48px; border-radius:12px; object-fit:cover; border:2px solid rgba(255,255,255,0.1); }
+.sidebar h2 { font-family:'Outfit',sans-serif; font-size:20px; font-weight:800; line-height:1.2; letter-spacing:-0.5px; }
+.sidebar-sub { font-size:13px; color:#94a3b8; margin-bottom:40px; line-height:1.5; }
+.menu-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#64748b; margin-bottom:12px; font-weight:600; }
+.menu { display:flex; flex-direction:column; gap:8px; }
+.menu a { text-decoration:none; color:#cbd5e1; padding:12px 16px; border-radius:10px; transition:all 0.2s ease; font-weight:600; font-size:14px; display:flex; align-items:center; gap:12px; background:transparent; border:1px solid transparent; }
+.menu a:hover { background:rgba(255,255,255,0.05); color:white; transform:translateX(4px); }
+.menu a.active { background:var(--primary); color:white; box-shadow:0 4px 12px rgba(59,130,246,0.3); }
+.menu a .icon { font-size:18px; width:24px; text-align:center; flex-shrink:0; }
+.sidebar-footer { margin-top:auto; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); font-size:13px; color:#94a3b8; display:flex; align-items:center; gap:10px; }
+.sidebar-footer img { width:28px; height:28px; border-radius:50%; object-fit:cover; }
+.main { margin-left:var(--sidebar-w); width:calc(100% - var(--sidebar-w)); padding:40px 48px; max-width:1000px; }
+.header-banner { background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius:var(--radius); margin-bottom:32px; padding:48px; color:white; position:relative; overflow:hidden; box-shadow:var(--shadow-md); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; }
+.header-banner::after { content:''; position:absolute; top:-50px; right:-50px; width:300px; height:300px; background:radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%); border-radius:50%; }
+.header-banner-text { position:relative; z-index:1; }
+.header-banner-text span.badge { display:inline-block; background:rgba(255,255,255,0.1); color:#93c5fd; font-size:12px; font-weight:700; padding:6px 14px; border-radius:20px; margin-bottom:16px; letter-spacing:0.5px; text-transform:uppercase; border:1px solid rgba(255,255,255,0.1); }
+.header-banner-text h1 { font-family:'Outfit',sans-serif; font-size:38px; font-weight:800; margin-bottom:12px; letter-spacing:-0.5px; }
+.header-banner-icon { font-size:72px; position:relative; z-index:1; filter:drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+.section { background:var(--surface); border-radius:var(--radius); padding:40px; margin-bottom:24px; box-shadow:var(--shadow-sm); border:1px solid var(--border); }
+.section h2 { font-family:'Outfit',sans-serif; color:var(--text-main); font-size:24px; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+.section h2::before { content:''; display:inline-block; width:6px; height:24px; background:var(--primary); border-radius:4px; }
+.section p { line-height:1.8; margin-bottom:16px; font-size:16px; color:var(--text-main); }
+.section ol { padding-left:24px; line-height:1.8; font-size:16px; color:var(--text-main); margin-bottom:16px; }
+.section ol li { margin-bottom:12px; }
+.section.info { background:var(--primary-light); border:1px solid rgba(59,130,246,0.2); }
+.section.info h2::before { background:var(--primary); }
+.section.warning { background:#fffbeb; border:1px solid rgba(245,158,11,0.2); }
+.section.warning h2::before { background:#f59e0b; }
+.section.warning h2 { color:#92400e; }
+.terms-list { list-style:none; padding:0; display:flex; flex-direction:column; gap:16px; margin-top:12px; }
+.terms-list li { background:var(--bg-color); border:1px solid var(--border); border-radius:12px; padding:20px 24px; display:flex; gap:16px; align-items:flex-start; font-size:15px; line-height:1.7; }
+.terms-list li .num { font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; color:var(--primary); line-height:1; flex-shrink:0; min-width:28px; }
+.footer { margin-top:60px; text-align:center; padding:32px; color:var(--text-muted); font-size:14px; border-top:1px solid var(--border); }
+.dev { margin-top:12px; display:flex; justify-content:center; align-items:center; gap:8px; }
+.dev-logo { width:28px; height:28px; border-radius:50%; object-fit:cover; }
+@media(max-width:960px) {
+  body { flex-direction:column; }
+  .sidebar { position:relative; width:100%; height:auto; padding:24px; }
+  .sidebar-footer { margin-top:32px; }
+  .main { margin-left:0; width:100%; padding:24px; }
+  .header-banner { padding:32px; flex-direction:column; text-align:center; }
+  .section { padding:24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <img src="../profetools-suite-icon.png" alt="ProfeTools Suite">
+    <h2>ProfeTools Suite</h2>
+  </div>
+  <p class="sidebar-sub">La solución definitiva para la gestión escolar en Guatemala.</p>
+  <p class="menu-label">Explorar</p>
+  <nav class="menu">
+    <a href="index.html"><span class="icon">✨</span> Inicio</a>
+    <a href="privacidad.html"><span class="icon">🔒</span> Política de Privacidad</a>
+    <a href="terminos.html" class="active"><span class="icon">📄</span> Términos de Uso</a>
+    <a href="seguridad.html"><span class="icon">🛡️</span> Seguridad y Google</a>
+    <a href="../index.html"><span class="icon">⬅️</span> Volver al Hub Principal</a>
+  </nav>
+  <div class="sidebar-footer">
+    <img src="../Desarrollador (2).png" alt="ProfeTools GT">
+    <span>ProfeTools GT</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="header-banner">
+    <div class="header-banner-text">
+      <span class="badge">Legal y Transparencia</span>
+      <h1>Términos de Uso</h1>
+      <p style="color:#cbd5e1; font-size:16px; margin:0; max-width:600px; line-height:1.6;">
+        Última actualización: Mayo 2026. Al instalar o utilizar ProfeTools Suite, aceptas estos términos y condiciones.
+      </p>
+    </div>
+    <div class="header-banner-icon">📄</div>
+  </div>
+
+  <div class="section">
+    <h2>Aceptación de los Términos</h2>
+    <p>El uso de <strong>ProfeTools Suite</strong> —software de escritorio desarrollado por ProfeTools GT— implica la aceptación plena y sin reservas de los presentes Términos de Uso. Si no estás de acuerdo con alguno de los puntos aquí descritos, te pedimos que no instales ni uses el software.</p>
+  </div>
+
+  <div class="section">
+    <h2>Uso Permitido del Software</h2>
+    <p>ProfeTools Suite es una herramienta exclusivamente para uso educativo-administrativo. A continuación se detalla el alcance del uso permitido:</p>
+    <ol class="terms-list">
+      <li>
+        <span class="num">01</span>
+        <div><strong>Uso legítimo y autorizado:</strong> El software puede ser utilizado únicamente por el centro educativo o docente que ha adquirido la licencia correspondiente. No está permitida la distribución del software a terceros fuera del acuerdo de licencia.</div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div><strong>Información académica real:</strong> El sistema está diseñado para gestionar datos reales de estudiantes, calificaciones y asistencia. El uso de información falsa, incompleta o fraudulenta es responsabilidad exclusiva del usuario.</div>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <div><strong>Integridad del software:</strong> El usuario no podrá modificar, descompilar, revertir ingeniería, copiar, sublicenciar ni distribuir el software o cualquiera de sus componentes sin el consentimiento expreso y por escrito del desarrollador.</div>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <div><strong>Respeto a las normas del MINEDUC:</strong> ProfeTools Suite está diseñado para alinearse a los estándares del Ministerio de Educación de Guatemala. El usuario es responsable de verificar el cumplimiento de los formatos requeridos por la autoridad educativa correspondiente.</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="section info">
+    <h2>Licencia de Uso</h2>
+    <p>La adquisición de ProfeTools Suite otorga al comprador una licencia de uso <strong>no exclusiva, intransferible y revocable</strong> para utilizar el software en el número de dispositivos especificado en el plan adquirido (dentro de un mismo centro educativo).</p>
+    <p>La licencia es válida por el período establecido en el plan seleccionado. Al vencer sin renovación, el acceso a las funciones avanzadas (generación de reportes PDF, Cloud Sync) puede verse limitado hasta su renovación.</p>
+  </div>
+
+  <div class="section warning">
+    <h2>Limitación de Responsabilidad</h2>
+    <p><strong>ProfeTools GT</strong> no se hace responsable por daños directos, indirectos, incidentales o consecuentes que puedan derivarse del uso o imposibilidad de uso de ProfeTools Suite, incluyendo, sin limitarse a:</p>
+    <ol>
+      <li>Pérdida de datos por falla eléctrica, hardware defectuoso o fuerza mayor fuera del control del software.</li>
+      <li>Errores en la generación de reportes causados por información incorrectamente ingresada por el usuario.</li>
+      <li>Incompatibilidades con sistemas operativos, controladores o configuraciones de red no documentados.</li>
+    </ol>
+    <p style="margin-top:16px;">Se recomienda mantener respaldos periódicos mediante el módulo Cloud Sync para garantizar la integridad de los datos académicos.</p>
+  </div>
+
+  <div class="section">
+    <h2>Propiedad Intelectual</h2>
+    <p>Todos los derechos de propiedad intelectual sobre ProfeTools Suite, incluyendo su código fuente, diseño, logotipos, documentación, algoritmos de generación de reportes y arquitectura de la base de datos, son propiedad exclusiva de <strong>ProfeTools GT</strong>.</p>
+    <p>El uso de la plataforma no transfiere al usuario ningún derecho de propiedad sobre el software ni sobre ninguno de sus componentes.</p>
+  </div>
+
+  <div class="section">
+    <h2>Modificaciones a los Términos</h2>
+    <p>ProfeTools GT se reserva el derecho de actualizar o modificar estos Términos de Uso en cualquier momento. Las modificaciones entrarán en vigencia a partir de su publicación en este sitio web. El uso continuado del software tras la publicación de cambios implica la aceptación de los nuevos términos.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contacto</h2>
+    <p>Para consultas legales o contractuales relacionadas con la licencia de ProfeTools Suite, contáctanos directamente:</p>
+    <p><strong>Correo electrónico:</strong> joseortiz@profetoolsgt.com</p>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 ProfeTools GT. Todos los derechos reservados.</p>
+    <div class="dev">
+      <img src="../Desarrollador (2).png" alt="ProfeTools GT" class="dev-logo">
+      <span>Desarrollado por ProfeTools GT</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
