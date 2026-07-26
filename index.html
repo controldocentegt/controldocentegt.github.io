@@ -354,29 +354,28 @@
             </div>
 
             <div id="aplicaciones" class="apps-container">
-                <!-- CONTROL DOCENTE GT -->
-                <a href="control/index.html" class="app-card-h">
-                    <div class="app-icon">
-                        <img src="Control%20Docente%20GT%20(2).png" alt="Control Docente GT">
+                <!-- CONTROL DOCENTE GT (CON DECLARACIÓN DE DRIVE) -->
+                <div style="background: var(--surface); border: 1px solid rgba(0, 102, 255, 0.3); border-radius: 20px; overflow: hidden; transition: var(--transition); backdrop-filter: blur(10px); box-shadow: 0 4px 30px rgba(0, 102, 255, 0.1);">
+                    <a href="control/index.html" class="app-card-h" style="border: none; border-radius: 0; background: transparent; backdrop-filter: none; box-shadow: none;">
+                        <div class="app-icon">
+                            <img src="Control%20Docente%20GT%20(2).png" alt="Control Docente GT">
+                        </div>
+                        <div class="app-info">
+                            <h3 style="white-space: nowrap;">Control Docente GT <span class="badge">Activo</span></h3>
+                            <p>Gestión avanzada de notas, cuadros vivos, asistencia y reportes automatizados. El estándar en Guatemala.</p>
+                        </div>
+                        <div class="app-action">Licencias y Demo →</div>
+                    </a>
+                    
+                    <!-- DECLARACIÓN DE PROPÓSITO Y USO DE GOOGLE DRIVE -->
+                    <div style="padding: 16px 24px; background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                        <h4 style="color: rgba(255,255,255,0.9); margin-bottom: 8px; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 6px; font-size: 0.95rem;">
+                            <span style="font-size: 1.1rem;">🛡️</span> Privacidad y Google Drive
+                        </h4>
+                        <p>
+                            Control Docente GT requiere permisos (<code>drive.file</code> y <code>drive.appdata</code>) exclusivamente para crear, leer y actualizar sus propios archivos de respaldo en la nube. Esto permite mantener sincronizados tus registros en varios dispositivos sin que el sistema tenga acceso a tus archivos personales u otros documentos en tu cuenta de Google.
+                        </p>
                     </div>
-                    <div class="app-info">
-                        <h3 style="white-space: nowrap;">Control Docente GT <span class="badge">Activo</span></h3>
-                        <p>Gestión avanzada de notas, cuadros vivos, asistencia y reportes automatizados. El estándar en Guatemala.</p>
-                    </div>
-                    <div class="app-action">Licencias y Demo →</div>
-                </a>
-
-                <!-- DECLARACIÓN DE PROPÓSITO Y USO DE GOOGLE DRIVE (CONTROL DOCENTE GT) -->
-                <div class="tech-disclosure" style="padding: 20px 24px; background: rgba(0, 102, 255, 0.05); border: 1px solid rgba(0, 102, 255, 0.2); border-radius: 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; backdrop-filter: blur(10px);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 12px; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 8px; font-size: 1.1rem;">
-                        <span>🛡️</span> Declaración de Propósito y Uso de Google Drive
-                    </h4>
-                    <p>
-                        <strong>Control Docente GT</strong> es una plataforma de software diseñada para la administración académica de profesores en Guatemala. La aplicación integra un módulo de sincronización bidireccional en la nube que requiere acceso al alcance <code>drive.metadata.readonly</code> de Google Drive.
-                    </p>
-                    <p style="margin-top: 10px;">
-                        Este permiso se utiliza exclusivamente para leer los metadatos y marcas de tiempo (timestamps) de los archivos de respaldo del usuario, permitiendo determinar con precisión qué dispositivo posee la versión más reciente de los registros académicos y prevenir conflictos o pérdida de datos al enlazar hasta 3 dispositivos por licencia.
-                    </p>
                 </div>
 
                 <!-- EduCore -->

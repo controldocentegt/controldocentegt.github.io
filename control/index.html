@@ -386,6 +386,43 @@ body {
   .hero-text h1 { font-size: 26px; }
   .section { padding: 22px 20px; }
 }
+/* ── CUSTOM LEMON SQUEEZY MODAL ───────── */
+.lemonsqueezy-modal {
+    max-width: 850px !important;
+}
+.lemonsqueezy-modal iframe {
+    width: 100% !important;
+}
+
+/* ── LIGHTBOX ────────────────────────────── */
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.2s;
+}
+#lightbox.active {
+    display: flex;
+}
+#lightbox.active img {
+    transform: scale(1);
+}
 
 </style>
 </head>
@@ -577,6 +614,11 @@ body {
     <div class="carousel-dots" id="gallery-dots"></div>
     <p class="carousel-counter"><span id="gallery-current">1</span> / <span id="gallery-total">25</span></p>
 
+    <!-- LIGHTBOX CONTAINER -->
+    <div id="lightbox" onclick="this.classList.remove('active')">
+        <img id="lightbox-img" src="" alt="Zoom">
+    </div>
+
     <script>
       (function() {
         const track  = document.getElementById('gallery-track');
@@ -588,12 +630,19 @@ body {
         const total  = imgs.length;
         totEl.textContent = total;
 
-        // Build dots
-        imgs.forEach((_, i) => {
+        // Build dots and Lightbox listeners
+        imgs.forEach((img, i) => {
           const d = document.createElement('button');
           d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
           d.addEventListener('click', () => goTo(i));
           dotsEl.appendChild(d);
+
+          // Add Lightbox
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', () => {
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+          });
         });
 
         function goTo(n) {
@@ -609,6 +658,10 @@ body {
         let timer = setInterval(() => goTo(current + 1), 4000);
         document.getElementById('gallery-wrap').addEventListener('mouseenter', () => clearInterval(timer));
         document.getElementById('gallery-wrap').addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 4000); });
+        
+        // Detener autoplay si el lightbox está abierto
+        document.getElementById('lightbox').addEventListener('click', () => { timer = setInterval(() => goTo(current + 1), 4000); });
+        imgs.forEach(img => img.addEventListener('click', () => clearInterval(timer)));
       })();
     </script>
   </div>
