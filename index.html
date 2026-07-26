@@ -468,36 +468,57 @@
             <!-- NEWS -->
             <div id="novedades" class="news-section">
                 <h2 class="section-title">Últimas Novedades</h2>
-                <div class="news-grid">
-                    <a href="control/index.html" class="news-card" style="text-decoration: none; color: inherit;">
+                <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                    
+                    <!-- ACTUALIZACIONES (Rotativas) -->
+                    <a href="control/index.html" class="news-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
-                            <span class="news-tag">Actualización</span>
-                            <h4>Control Docente GT mejora su motor de sincronización con Google Drive</h4>
+                            <span class="news-tag" style="background: rgba(16,185,129,0.1); color: #10b981;">Actualización</span>
+                            <h4 id="rotating-update-text" style="transition: opacity 0.5s;">Control Docente GT estrena módulo de fotografías y Cloud Sync.</h4>
                         </div>
-                        <span class="news-date">Hace 2 días</span>
+                        <span class="news-date" id="rotating-update-date" style="margin-top: 15px; display: block;">Hace 2 días</span>
                     </a>
-                    <a href="https://www.youtube.com/@ControlDocenteGT" target="_blank" class="news-card" style="text-decoration: none; color: inherit;">
+                    
+                    <!-- COMUNIDAD (YouTube) -->
+                    <a href="https://www.youtube.com/@ControlDocenteGT" target="_blank" class="news-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
-                            <span class="news-tag">Comunidad</span>
-                            <h4>Nuevo canal de YouTube con tutoriales paso a paso para docentes</h4>
+                            <span class="news-tag" style="background: rgba(255,0,0,0.1); color: #ff0000;">Comunidad</span>
+                            <h4>Tutoriales y guías en nuestro canal oficial de YouTube</h4>
                         </div>
-                        <span class="news-date">Hace 1 semana</span>
+                        <span class="news-date" style="margin-top: 15px; display: block;">Siempre disponible</span>
                     </a>
-                    <a href="#aplicaciones" class="news-card" style="text-decoration: none; color: inherit;">
+
+                    <!-- EDUCACIÓN / CURSOS (Google) -->
+                    <a href="https://grow.google/intl/es/courses-and-tools/" target="_blank" class="news-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
-                            <span class="news-tag">Desarrollo</span>
-                            <h4>Inician las pruebas cerradas del módulo 'Control Estudiantil'</h4>
+                            <span class="news-tag" style="background: rgba(66,133,244,0.1); color: #4285F4;">Educación</span>
+                            <h4>Crece con Google: Cursos gratuitos y certificaciones oficiales para docentes</h4>
                         </div>
-                        <span class="news-date">Hace 2 semanas</span>
-                    </a>
-                    <a href="control/index.html" class="news-card" style="text-decoration: none; color: inherit;">
-                        <div>
-                            <span class="news-tag">Educación</span>
-                            <h4>Tips: Cómo estructurar tus cuadros vivos eficientemente</h4>
-                        </div>
-                        <span class="news-date">Hace 1 mes</span>
+                        <span class="news-date" style="margin-top: 15px; display: block;">Recomendación</span>
                     </a>
                 </div>
+                
+                <script>
+                    const updates = [
+                        { text: "Control Docente GT estrena módulo de fotografías y Cloud Sync.", date: "Nuevo" },
+                        { text: "ProfeTools Suite evoluciona y ahora se llama oficialmente EduCore.", date: "Reciente" },
+                        { text: "RubriMaker: El evaluador de proyectos está en su fase final.", date: "En Desarrollo" }
+                    ];
+                    let currentUpdate = 0;
+                    
+                    setInterval(() => {
+                        const textEl = document.getElementById('rotating-update-text');
+                        const dateEl = document.getElementById('rotating-update-date');
+                        
+                        textEl.style.opacity = 0;
+                        setTimeout(() => {
+                            currentUpdate = (currentUpdate + 1) % updates.length;
+                            textEl.innerText = updates[currentUpdate].text;
+                            dateEl.innerText = updates[currentUpdate].date;
+                            textEl.style.opacity = 1;
+                        }, 500);
+                    }, 6000); // Cambia cada 6 segundos
+                </script>
             </div>
         </section>
     </main>
