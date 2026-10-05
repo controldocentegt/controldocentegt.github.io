@@ -1,729 +1,933 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Control Docente GT</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Docente GT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather+Sans:wght@400;700&display=swap"
+    rel="stylesheet">
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+  <style>
+    :root {
+      --azul: #0d47a1;
+      --azul-med: #1565c0;
+      --azul-claro: #e3f2fd;
+      --acento: #2979ff;
+      --fondo: #f0f4fb;
+      --blanco: #ffffff;
+      --texto: #2c3e50;
+      --texto-suave: #607d8b;
+      --amarillo: #ffb300;
+      --rojo-suave: #bf360c;
+      --sombra: 0 4px 20px rgba(13, 71, 161, 0.10);
+      --radio: 16px;
+      --sidebar-w: 270px;
+    }
 
-:root {
-  --azul:       #0d47a1;
-  --azul-med:   #1565c0;
-  --azul-claro: #e3f2fd;
-  --acento:     #2979ff;
-  --fondo:      #f0f4fb;
-  --blanco:     #ffffff;
-  --texto:      #2c3e50;
-  --texto-suave:#607d8b;
-  --amarillo:   #ffb300;
-  --rojo-suave: #bf360c;
-  --sombra:     0 4px 20px rgba(13,71,161,0.10);
-  --radio:      16px;
-  --sidebar-w:  270px;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      display: flex;
+      min-height: 100vh;
+    }
 
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--fondo);
-  color: var(--texto);
-  display: flex;
-  min-height: 100vh;
-}
+    /* ── SIDEBAR ─────────────────────────────── */
 
-/* ── SIDEBAR ─────────────────────────────── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: linear-gradient(175deg, #0a3880 0%, #1565c0 100%);
+      color: white;
+      padding: 32px 20px;
+      border-right: none;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100%;
+      box-shadow: 4px 0 24px rgba(13, 71, 161, 0.18);
+      z-index: 100;
+      overflow-y: auto;
+    }
 
-.sidebar {
-  width: var(--sidebar-w);
-  background: linear-gradient(175deg, #0a3880 0%, #1565c0 100%);
-  color: white;
-  padding: 32px 20px;
-  border-right: none;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  height: 100%;
-  box-shadow: 4px 0 24px rgba(13,71,161,0.18);
-  z-index: 100;
-  overflow-y: auto;
-}
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
 
-.sidebar-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
+    .sidebar-brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
 
-.sidebar-brand img {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.4);
-}
+    .sidebar h2 {
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
 
-.sidebar h2 {
-  font-family: 'Merriweather Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.3px;
-  white-space: nowrap;
-}
+    .sidebar-sub {
+      font-size: 12px;
+      opacity: 0.75;
+      margin-bottom: 36px;
+      margin-top: 6px;
+      line-height: 1.5;
+      padding-left: 2px;
+    }
 
-.sidebar-sub {
-  font-size: 12px;
-  opacity: 0.75;
-  margin-bottom: 36px;
-  margin-top: 6px;
-  line-height: 1.5;
-  padding-left: 2px;
-}
+    .menu-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
 
-.menu-label {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  opacity: 0.5;
-  margin-bottom: 10px;
-  padding-left: 4px;
-}
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+    .menu a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 11px 14px;
+      border-radius: 10px;
+      transition: all 0.2s;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
 
-.menu a {
-  text-decoration: none;
-  color: rgba(255,255,255,0.88);
-  background: rgba(255,255,255,0.08);
-  padding: 11px 14px;
-  border-radius: 10px;
-  transition: all 0.2s;
-  font-weight: 700;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
+    .menu a:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      transform: translateX(3px);
+    }
 
-.menu a:hover {
-  background: rgba(255,255,255,0.18);
-  color: white;
-  transform: translateX(3px);
-}
+    .menu a.active {
+      background: white;
+      color: var(--azul);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
 
-.menu a.active {
-  background: white;
-  color: var(--azul);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-}
+    .menu a .icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
 
-.menu a .icon {
-  font-size: 16px;
-  width: 20px;
-  text-align: center;
-  flex-shrink: 0;
-}
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 12px;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.sidebar-footer {
-  margin-top: auto;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  font-size: 12px;
-  opacity: 0.6;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .sidebar-footer img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-.sidebar-footer img {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+    /* ── MAIN ─────────────────────────────────── */
 
-/* ── MAIN ─────────────────────────────────── */
+    .main {
+      margin-left: var(--sidebar-w);
+      width: calc(100% - var(--sidebar-w));
+      padding: 36px 44px;
+    }
 
-.main {
-  margin-left: var(--sidebar-w);
-  width: calc(100% - var(--sidebar-w));
-  padding: 36px 44px;
-}
+    /* ── BANNER ───────────────────────────────── */
 
-/* ── BANNER ───────────────────────────────── */
+    .hero-banner {
+      margin-bottom: 28px;
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+    }
 
-.hero-banner {
-  margin-bottom: 28px;
-  border-radius: var(--radio);
-  overflow: hidden;
-  box-shadow: var(--sombra);
-}
+    .banner-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
 
-.banner-img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
+    /* ── HERO CARD ────────────────────────────── */
 
-/* ── HERO CARD ────────────────────────────── */
+    .hero {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      padding: 36px 40px;
+      box-shadow: var(--sombra);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      border-left: 5px solid var(--acento);
+    }
 
-.hero {
-  background: var(--blanco);
-  border-radius: var(--radio);
-  padding: 36px 40px;
-  box-shadow: var(--sombra);
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
-  border-left: 5px solid var(--acento);
-}
+    .app-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 3px solid var(--azul-claro);
+      box-shadow: 0 4px 16px rgba(13, 71, 161, 0.15);
+      flex-shrink: 0;
+    }
 
-.app-logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 18px;
-  object-fit: cover;
-  border: 3px solid var(--azul-claro);
-  box-shadow: 0 4px 16px rgba(13,71,161,0.15);
-  flex-shrink: 0;
-}
+    .hero-text h1 {
+      font-family: 'Merriweather Sans', sans-serif;
+      color: var(--azul);
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
 
-.hero-text h1 {
-  font-family: 'Merriweather Sans', sans-serif;
-  color: var(--azul);
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.5px;
-}
+    .hero-text p {
+      line-height: 1.75;
+      font-size: 16px;
+      color: var(--texto-suave);
+      max-width: 640px;
+    }
 
-.hero-text p {
-  line-height: 1.75;
-  font-size: 16px;
-  color: var(--texto-suave);
-  max-width: 640px;
-}
+    /* ── SECCIONES ────────────────────────────── */
 
-/* ── SECCIONES ────────────────────────────── */
+    .section {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      padding: 30px 34px;
+      margin-bottom: 22px;
+      box-shadow: var(--sombra);
+    }
 
-.section {
-  background: var(--blanco);
-  border-radius: var(--radio);
-  padding: 30px 34px;
-  margin-bottom: 22px;
-  box-shadow: var(--sombra);
-}
+    .section h2 {
+      font-family: 'Merriweather Sans', sans-serif;
+      color: var(--azul-med);
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.section h2 {
-  font-family: 'Merriweather Sans', sans-serif;
-  color: var(--azul-med);
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    .section h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--acento);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
 
-.section h2::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 20px;
-  background: var(--acento);
-  border-radius: 4px;
-  flex-shrink: 0;
-}
+    .section p {
+      line-height: 1.85;
+      margin-bottom: 14px;
+      font-size: 15px;
+      color: var(--texto);
+    }
 
-.section p {
-  line-height: 1.85;
-  margin-bottom: 14px;
-  font-size: 15px;
-  color: var(--texto);
-}
+    .section p:last-child {
+      margin-bottom: 0;
+    }
 
-.section p:last-child { margin-bottom: 0; }
+    .section ul {
+      padding-left: 20px;
+      line-height: 2;
+      font-size: 15px;
+    }
 
-.section ul {
-  padding-left: 20px;
-  line-height: 2;
-  font-size: 15px;
-}
+    .section ul li {
+      margin-bottom: 2px;
+    }
 
-.section ul li { margin-bottom: 2px; }
+    /* ── FEATURE GRID ─────────────────────────── */
 
-/* ── FEATURE GRID ─────────────────────────── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
+    .feature-item {
+      background: var(--azul-claro);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid rgba(13, 71, 161, 0.08);
+    }
 
-.feature-item {
-  background: var(--azul-claro);
-  border-radius: 12px;
-  padding: 16px 18px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  border: 1px solid rgba(13,71,161,0.08);
-}
+    .feature-item .fi-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
 
-.feature-item .fi-icon {
-  font-size: 22px;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
+    .feature-item .fi-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--azul);
+      line-height: 1.4;
+    }
 
-.feature-item .fi-text {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--azul);
-  line-height: 1.4;
-}
+    /* ── VARIANTES ────────────────────────────── */
 
-/* ── VARIANTES ────────────────────────────── */
+    .section.warning {
+      background: #fffbf0;
+      border-left: 5px solid var(--amarillo);
+    }
 
-.section.warning {
-  background: #fffbf0;
-  border-left: 5px solid var(--amarillo);
-}
+    .section.warning h2::before {
+      background: var(--amarillo);
+    }
 
-.section.warning h2::before { background: var(--amarillo); }
+    .section.warning strong {
+      color: var(--rojo-suave);
+    }
 
-.section.warning strong { color: var(--rojo-suave); }
+    .section.info {
+      background: #eef4ff;
+      border-left: 5px solid var(--acento);
+    }
 
-.section.info {
-  background: #eef4ff;
-  border-left: 5px solid var(--acento);
-}
+    /* ── CONTACT CARD ─────────────────────────── */
 
-/* ── CONTACT CARD ─────────────────────────── */
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--azul-claro);
+      border: 1.5px solid rgba(13, 71, 161, 0.18);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-weight: 700;
+      color: var(--azul);
+      font-size: 15px;
+      margin-top: 6px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
 
-.contact-email {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--azul-claro);
-  border: 1.5px solid rgba(13,71,161,0.18);
-  border-radius: 8px;
-  padding: 10px 18px;
-  font-weight: 700;
-  color: var(--azul);
-  font-size: 15px;
-  margin-top: 6px;
-  text-decoration: none;
-  transition: 0.2s;
-}
+    .contact-email:hover {
+      background: var(--azul);
+      color: white;
+    }
 
-.contact-email:hover {
-  background: var(--azul);
-  color: white;
-}
+    /* ── FOOTER ───────────────────────────────── */
 
-/* ── FOOTER ───────────────────────────────── */
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 28px;
+      color: var(--texto-suave);
+      font-size: 13px;
+      border-top: 1px solid #dde6f3;
+    }
 
-.footer {
-  margin-top: 40px;
-  text-align: center;
-  padding: 28px;
-  color: var(--texto-suave);
-  font-size: 13px;
-  border-top: 1px solid #dde6f3;
-}
+    .dev {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
 
-.dev {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
+    .dev-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-.dev-logo {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+    /* ── RESPONSIVE ───────────────────────────── */
 
-/* ── RESPONSIVE ───────────────────────────── */
+    @media(max-width:900px) {
+      body {
+        flex-direction: column;
+      }
 
-@media(max-width:900px) {
-  body { flex-direction: column; }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        padding: 24px 20px;
+      }
 
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    padding: 24px 20px;
-  }
+      .sidebar-footer {
+        margin-top: 20px;
+      }
 
-  .sidebar-footer { margin-top: 20px; }
+      .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 18px;
+      }
 
-  .main {
-    margin-left: 0;
-    width: 100%;
-    padding: 20px 18px;
-  }
+      .hero {
+        padding: 24px;
+        gap: 18px;
+      }
 
-  .hero { padding: 24px; gap: 18px; }
-  .hero-text h1 { font-size: 26px; }
-  .section { padding: 22px 20px; }
-}
-/* ── CUSTOM LEMON SQUEEZY MODAL ───────── */
-.lemonsqueezy-modal {
-    max-width: 850px !important;
-}
-.lemonsqueezy-modal iframe {
-    width: 100% !important;
-}
+      .hero-text h1 {
+        font-size: 26px;
+      }
 
-/* ── LIGHTBOX ────────────────────────────── */
-#lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 99999;
-    align-items: center;
-    justify-content: center;
-    cursor: zoom-out;
-}
-#lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 12px;
-    object-fit: contain;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    transform: scale(0.95);
-    transition: transform 0.2s;
-}
-#lightbox.active {
-    display: flex;
-}
-#lightbox.active img {
-    transform: scale(1);
-}
+      .section {
+        padding: 22px 20px;
+      }
+    }
 
-</style>
+    /* ── CUSTOM LEMON SQUEEZY MODAL ───────── */
+    .lemonsqueezy-modal {
+      max-width: 850px !important;
+    }
+
+    .lemonsqueezy-modal iframe {
+      width: 100% !important;
+    }
+
+    /* ── LIGHTBOX ────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.2s;
+    }
+
+    #lightbox.active {
+      display: flex;
+    }
+
+    #lightbox.active img {
+      transform: scale(1);
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
 
-  <div class="sidebar-brand">
-    <img src="../Control%20Docente%20GT%20(2).png" alt="Logo">
-    <h2>Control Docente GT</h2>
-  </div>
+    <div class="sidebar-brand">
+      <img src="../Control%20Docente%20GT%20(2).png" alt="Logo">
+      <h2>Control Docente GT</h2>
+    </div>
 
-  <p class="sidebar-sub">Plataforma educativa y administrativa para docentes e instituciones.</p>
+    <p class="sidebar-sub">Plataforma educativa y administrativa para docentes e instituciones.</p>
 
-  <p class="menu-label">Navegación</p>
+    <p class="menu-label">Navegación</p>
 
-  <nav class="menu">
-    <a href="index.html" class="active"><span class="icon">🏠</span> Inicio</a>
-    <a href="https://tienda.profetoolsgt.com/checkout/buy/e1144da2-83a0-4b12-9bb2-3649fd68dae9?embed=1" class="lemonsqueezy-button" style="background: rgba(255, 179, 0, 0.15); color: #ffb300; border-color: rgba(255, 179, 0, 0.3);"><span class="icon">⭐</span> Comprar Licencia Full</a>
-    <a href="privacidad.html"><span class="icon">🔒</span> Política de Privacidad</a>
-    <a href="terminos.html"><span class="icon">📄</span> Condiciones del Servicio</a>
-    <a href="seguridad.html"><span class="icon">🛡️</span> Privacidad y Seguridad</a>
-    <a href="eliminacion-datos.html">
-      <span class="icon">🗑️</span> Eliminación de Datos
+    <nav class="menu">
+      <a href="index.html" class="active"><span class="icon">🏠</span> Inicio</a>
+      <a href="https://tienda.profetoolsgt.com/checkout/buy/e1144da2-83a0-4b12-9bb2-3649fd68dae9?embed=1"
+        class="lemonsqueezy-button"
+        style="background: rgba(255, 179, 0, 0.15); color: #ffb300; border-color: rgba(255, 179, 0, 0.3);"><span
+          class="icon">⭐</span> Comprar Licencia Full</a>
+      <a href="privacidad.html"><span class="icon">🔒</span> Política de Privacidad</a>
+      <a href="terminos.html"><span class="icon">📄</span> Condiciones del Servicio</a>
+      <a href="seguridad.html"><span class="icon">🛡️</span> Privacidad y Seguridad</a>
+      <a href="eliminacion-datos.html">
+        <span class="icon">🗑️</span> Eliminación de Datos
+      </a>
+      <a href="../profetools-suite/index.html"><span class="icon">🖥️</span> EduCore</a>
+      <a href="../rubrimaker/index.html"><span class="icon">📋</span> RubriMaker</a>
+      <a href="https://www.youtube.com/@ControlDocenteGT" target="_blank">
+        <span class="icon">▶️</span> Canal de YouTube
+      </a>
+      <!-- TODO: PEGAR AQUÍ EL ENLACE OFICIAL DE LA PLAY STORE CUANDO ESTÉ LISTO -->
+      <a href="https://play.google.com/store/apps" target="_blank"
+        style="margin-top: 10px; background: rgba(33, 150, 243, 0.15); color: #2196f3; border-color: rgba(33, 150, 243, 0.3);">
+        <span class="icon">📱</span> Descargar en Play Store
+      </a>
+      <a href="../index.html" style="margin-top: 5px;"><span class="icon">⬅️</span> Volver al Hub</a>
+    </nav>
+
+    <a href="../index.html" class="sidebar-footer" style="text-decoration:none; color:inherit;">
+      <img src="../Desarrollador%20(2).png" alt="ProfeTools GT">
+      <span>ProfeTools GT</span>
     </a>
-    <a href="../profetools-suite/index.html"><span class="icon">🖥️</span> EduCore</a>
-    <a href="../rubrimaker/index.html"><span class="icon">📋</span> RubriMaker</a>
-    <a href="https://www.youtube.com/@ControlDocenteGT" target="_blank">
-      <span class="icon">▶️</span> Canal de YouTube
-    </a>
-    <!-- TODO: PEGAR AQUÍ EL ENLACE OFICIAL DE LA PLAY STORE CUANDO ESTÉ LISTO -->
-    <a href="https://play.google.com/store/apps" target="_blank" style="margin-top: 10px; background: rgba(33, 150, 243, 0.15); color: #2196f3; border-color: rgba(33, 150, 243, 0.3);">
-      <span class="icon">📱</span> Descargar en Play Store
-    </a>
-    <a href="../index.html" style="margin-top: 5px;"><span class="icon">⬅️</span> Volver al Hub</a>
-  </nav>
 
-  <a href="../index.html" class="sidebar-footer" style="text-decoration:none; color:inherit;">
-    <img src="../Desarrollador%20(2).png" alt="ProfeTools GT">
-    <span>ProfeTools GT</span>
-  </a>
+  </div>
 
-</div>
-
-<!-- CONTENIDO PRINCIPAL -->
-<div class="main">
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main">
 
 
-  <!-- HERO -->
-  <div class="hero">
-    <img src="../Control%20Docente%20GT%20(2).png" alt="Logo Control Docente GT" class="app-logo">
-    <div class="hero-text">
-      <h1 style="white-space: nowrap;">Control Docente GT</h1>
-      <p>Sistema inteligente de gestión y control académico diseñado para facilitar el trabajo docente y administrativo en instituciones educativas guatemaltecas.</p>
-      <div style="margin-top: 15px; display: flex; gap: 15px; flex-wrap: wrap;">
-        <a href="https://tienda.profetoolsgt.com/checkout/buy/e1144da2-83a0-4b12-9bb2-3649fd68dae9?embed=1" class="lemonsqueezy-button" style="background: var(--acento); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"><span style="font-size: 18px;">⭐</span> Obtener Licencia</a>
-        <!-- TODO: PEGAR AQUÍ EL ENLACE OFICIAL DE LA PLAY STORE CUANDO ESTÉ LISTO -->
-        <a href="https://play.google.com/store/apps" target="_blank" style="background: #000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"><span style="font-size: 18px;">📱</span> Google Play</a>
+    <!-- HERO -->
+    <div class="hero">
+      <img src="../Control%20Docente%20GT%20(2).png" alt="Logo Control Docente GT" class="app-logo">
+      <div class="hero-text">
+        <h1 style="white-space: nowrap;">Control Docente GT</h1>
+        <p>Sistema inteligente de gestión y control académico diseñado para facilitar el trabajo docente y
+          administrativo en instituciones educativas guatemaltecas.</p>
+        <div style="margin-top: 15px; display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="https://tienda.profetoolsgt.com/checkout/buy/e1144da2-83a0-4b12-9bb2-3649fd68dae9?embed=1"
+            class="lemonsqueezy-button"
+            style="background: var(--acento); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"><span
+              style="font-size: 18px;">⭐</span> Obtener Licencia</a>
+          <!-- TODO: PEGAR AQUÍ EL ENLACE OFICIAL DE LA PLAY STORE CUANDO ESTÉ LISTO -->
+          <a href="https://play.google.com/store/apps" target="_blank"
+            style="background: #000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"><span
+              style="font-size: 18px;">📱</span> Google Play</a>
+          <!-- BOTÓN PARA PC (WINDOWS) -->
+          <a href="ControlDocente_Instalador_Windows.exe" download
+            style="background: #000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"><span
+              style="font-size: 18px;">💻</span> Descargar PC</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- SOBRE LA APP (NUEVAS FUNCIONALIDADES) -->
-  <div class="section">
-    <h2>Funcionalidades Principales</h2>
-    <p>Control Docente GT ha sido actualizado con un conjunto completo de herramientas que liberan al docente de tareas repetitivas, ahora desde la palma de su mano.</p>
+    <!-- SOBRE LA APP (NUEVAS FUNCIONALIDADES) -->
+    <div class="section">
+      <h2>Funcionalidades Principales</h2>
+      <p>Control Docente GT ha sido actualizado con un conjunto completo de herramientas que liberan al docente de
+        tareas repetitivas, ahora desde la palma de su mano.</p>
 
-    <div class="feature-grid">
-      <div class="feature-item">
-        <span class="fi-icon">📸</span>
-        <span class="fi-text">Módulo de Fotografías: Identificación visual rápida y logos en PDFs.</span>
-      </div>
-      <div class="feature-item">
-        <span class="fi-icon">📊</span>
-        <span class="fi-text">Importación/Exportación: Trabaja con Excel y reportes PDF.</span>
-      </div>
-      <div class="feature-item">
-        <span class="fi-icon">📑</span>
-        <span class="fi-text">Reportes y Consolidados: Cuadros de zona y resúmenes anuales automáticos.</span>
-      </div>
-      <div class="feature-item">
-        <span class="fi-icon">☁️</span>
-        <span class="fi-text">Cloud Sync: Sincronización en la nube con Google Drive y Backups automáticos.</span>
-      </div>
-      <div class="feature-item">
-        <span class="fi-icon">⚡</span>
-        <span class="fi-text">Llenado Masivo: Cuadro vivo optimizado para ingreso veloz de notas.</span>
-      </div>
-      <div class="feature-item">
-        <span class="fi-icon">💬</span>
-        <span class="fi-text">Integración WhatsApp: Comunicación con encargados en un clic.</span>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <span class="fi-icon">📸</span>
+          <span class="fi-text">Módulo de Fotografías: Identificación visual rápida y logos en PDFs.</span>
+        </div>
+        <div class="feature-item">
+          <span class="fi-icon">📊</span>
+          <span class="fi-text">Importación/Exportación: Trabaja con Excel y reportes PDF.</span>
+        </div>
+        <div class="feature-item">
+          <span class="fi-icon">📑</span>
+          <span class="fi-text">Reportes y Consolidados: Cuadros de zona y resúmenes anuales automáticos.</span>
+        </div>
+        <div class="feature-item">
+          <span class="fi-icon">☁️</span>
+          <span class="fi-text">Cloud Sync: Sincronización en la nube con Google Drive y Backups automáticos.</span>
+        </div>
+        <div class="feature-item">
+          <span class="fi-icon">⚡</span>
+          <span class="fi-text">Llenado Masivo: Cuadro vivo optimizado para ingreso veloz de notas.</span>
+        </div>
+        <div class="feature-item">
+          <span class="fi-icon">💬</span>
+          <span class="fi-text">Integración WhatsApp: Comunicación con encargados en un clic.</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- LICENCIA Y PRECIOS -->
-  <div class="section" style="background: linear-gradient(135deg, #0a3880 0%, #1565c0 100%); color: white; border: none;">
-    <h2 style="color: white;">⭐ Licencia Premium Anual</h2>
-    <p style="color: #e3f2fd;">Desbloquea el potencial completo de Control Docente GT. La aplicación que descargas desde Google Play incluye una prueba gratuita de 30 días. Para continuar usando todas las funciones sin restricciones, adquiere tu licencia anual.</p>
-    
-    <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-top: 20px;">
-      <h3 style="margin-bottom: 15px; font-family: 'Merriweather Sans', sans-serif; font-size: 18px;">¿Qué incluye la Licencia Full?</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span style="color: #ffb300;">✓</span> Uso ilimitado de la plataforma sin cortes de 30 días.</li>
-        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span style="color: #ffb300;">✓</span> Acceso a los módulos de exportación en Excel y Cuadro Vivo.</li>
-        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span style="color: #ffb300;">✓</span> Sincronización automática con Google Drive.</li>
-        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ffb300;">✓</span> Soporte técnico prioritario.</li>
-      </ul>
-    </div>
-    
-    <a href="https://tienda.profetoolsgt.com/checkout/buy/e1144da2-83a0-4b12-9bb2-3649fd68dae9?embed=1" class="lemonsqueezy-button" style="display: inline-block; margin-top: 24px; background: #ffb300; color: #0a3880; font-weight: 800; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 16px; box-shadow: 0 4px 15px rgba(255,179,0,0.4); transition: transform 0.2s;">Adquirir Licencia Anual →</a>
-  </div>
+    <!-- SECCIÓN DE DESCARGAS (OPCIONAL/OCULTA POR AHORA) -->
+    <!-- Para activarla en el futuro cuando haya varias versiones, borra esta línea y la última línea de este bloque -->
+    <!--
+    <div class="section" style="border-left: 5px solid #2196f3;">
+      <h2 style="color: #2196f3;">📥 Descarga la Aplicación</h2>
+      <p>Control Docente GT está disponible en múltiples plataformas para que puedas gestionar tu información desde cualquier lugar.</p>
+      
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; align-items: stretch;">
+        
+        <div style="background: var(--fondo); padding: 25px; border-radius: 16px; flex: 1; min-width: 250px; text-align: center; border: 1px solid #dde6f3; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+          <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
+          <h3 style="color: var(--azul); font-family: 'Merriweather Sans', sans-serif; margin-bottom: 8px; font-size: 18px;">Para Android</h3>
+          <p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 18px; flex-grow: 1;">Lleva tu registro académico siempre contigo. Ideal para usar en clase.</p>
+          <a href="https://play.google.com/store/apps" target="_blank" style="background: #000; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; justify-content: center; align-items: center; gap: 8px; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            <span style="font-size: 18px;">▶️</span> Google Play
+          </a>
+        </div>
 
-  <!-- GOOGLE DRIVE -->
-  <div class="section info">
-    <h2>Integración y Uso de Google Drive API</h2>
-    <p><strong>Control Docente GT</strong> es una plataforma de software diseñada para la administración académica de profesores en Guatemala. La aplicación integra un módulo de sincronización bidireccional en la nube que requiere acceso al alcance <code>drive.metadata.readonly</code> de Google Drive.</p>
-    <p>Este permiso se utiliza exclusivamente para leer los metadatos y marcas de tiempo (timestamps) de los archivos de respaldo del usuario, permitiendo determinar con precisión qué dispositivo posee la versión más reciente de los registros académicos y prevenir conflictos o pérdida de datos al enlazar hasta 3 dispositivos por licencia.</p>
-    <p>Control Docente GT no accede, modifica ni comparte archivos personales ajenos al funcionamiento de la aplicación, garantizando la total privacidad de sus datos.</p>
-  </div>
+        <div style="background: var(--fondo); padding: 25px; border-radius: 16px; flex: 1; min-width: 250px; text-align: center; border: 1px solid #dde6f3; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+          <div style="font-size: 48px; margin-bottom: 10px;">💻</div>
+          <h3 style="color: var(--azul); font-family: 'Merriweather Sans', sans-serif; margin-bottom: 8px; font-size: 18px;">Para Windows</h3>
+          <p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 18px; flex-grow: 1;">Máxima productividad en pantalla grande. Perfecto para trabajar desde casa.</p>
+          <a href="#" style="background: #0078D7; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; justify-content: center; align-items: center; gap: 8px; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,120,215,0.3);">
+            <span style="font-size: 18px;">⬇️</span> Bajar el instalador .exe
+          </a>
+        </div>
 
-  <!-- PRIVACIDAD -->
-  <div class="section">
-    <h2>Privacidad y Seguridad</h2>
-    <p>Control Docente GT implementa autenticación segura mediante Google Sign-In para proteger el acceso a funciones relacionadas con respaldos y almacenamiento académico.</p>
-    <p>La aplicación solicita únicamente los permisos necesarios para el funcionamiento de herramientas específicas como exportaciones, respaldos y sincronización con Google Drive.</p>
-    <p>La información utilizada dentro de la plataforma no es vendida ni compartida con terceros y permanece bajo control del usuario o institución educativa.</p>
-  </div>
-
-  <!-- FOTOGRAFIAS -->
-  <div class="section warning">
-    <h2>Uso de Fotografías de Estudiantes</h2>
-    <p><strong>Importante:</strong> El uso, almacenamiento o administración de fotografías de estudiantes dentro de la plataforma es responsabilidad exclusiva del usuario o institución educativa.</p>
-    <p>Las imágenes deben utilizarse únicamente con fines académicos, administrativos o de identificación institucional conforme a las políticas internas del establecimiento educativo correspondiente.</p>
-    <p>Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de utilizar fotografías de estudiantes dentro de la aplicación.</p>
-    <p>El desarrollador de Control Docente GT no recopila, distribuye ni comercializa fotografías de estudiantes y no se responsabiliza por usos indebidos realizados por terceros.</p>
-  </div>
-
-  <!-- GALERÍA DE CAPTURAS (CARRUSEL AUTOMÁTICO) -->
-  <div class="section">
-    <h2>Galería de la Aplicación</h2>
-    <p>Explora la interfaz moderna e intuitiva de Control Docente GT, diseñada específicamente para el entorno educativo móvil.</p>
-
-    <style>
-      .carousel-wrap { position: relative; overflow: hidden; border-radius: 14px; margin: 20px auto 0; background: #e8edf5; max-height: 600px; max-width: 450px; aspect-ratio: 9/16; box-shadow: 0 8px 30px rgba(13,71,161,0.15); }
-      .carousel-track { display: flex; transition: transform 0.4s ease-in-out; height: 100%; }
-      .carousel-track img { flex-shrink: 0; width: 100%; height: 100%; object-fit: contain; background: #e8edf5; }
-      .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(13,71,161,0.75); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; z-index: 10; transition: background 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-      .carousel-btn:hover { background: rgba(13,71,161,1); }
-      .carousel-btn.prev { left: 8px; }
-      .carousel-btn.next { right: 8px; }
-      .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
-      .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; cursor: pointer; transition: all 0.3s; border: none; }
-      .carousel-dot.active { background: var(--azul); transform: scale(1.3); }
-      .carousel-counter { text-align: center; margin-top: 8px; font-size: 13px; color: var(--texto-suave); font-weight: 700; }
-      .carousel-outer { padding: 0 30px; }
-    </style>
-
-    <div class="carousel-wrap" id="gallery-wrap">
-      <div class="carousel-track" id="gallery-track">
-        <img src="0.jpg"  alt="Pantalla de inicio">
-        <img src="1.jpg"  alt="Menú principal">
-        <img src="3.jpg"  alt="Módulo de asistencia">
-        <img src="4.jpg"  alt="Registro de alumnos">
-        <img src="5.0.jpg" alt="EduCore - Gestión">
-        <img src="5.1.jpg" alt="Vista de cursos">
-        <img src="6.jpg"  alt="Calificaciones">
-        <img src="7.jpg"  alt="Reporte PDF">
-        <img src="8.jpg"  alt="Configuración">
-        <img src="9.jpg"  alt="Fotografías de alumnos">
-        <img src="10.jpg" alt="Cloud Sync">
-        <img src="11.jpg" alt="Asistencia masiva">
-        <img src="12.jpg" alt="Módulo de notas">
-        <img src="13.jpg" alt="Exportar datos">
-        <img src="14.jpg" alt="Panel docente">
-        <img src="15.jpg" alt="Horario de clases">
-        <img src="16.jpg" alt="Registro académico">
-        <img src="17.jpg" alt="Gestión escolar">
-        <img src="19.jpg" alt="Listado de secciones">
-        <img src="20.jpg" alt="Importar Excel">
-        <img src="21.jpg" alt="Estadísticas">
-        <img src="22.jpg" alt="Notificaciones">
-        <img src="23.jpg" alt="Perfil del docente">
-        <img src="26.jpg" alt="Reportes avanzados">
-        <img src="27.jpg" alt="Cierre de ciclo">
       </div>
-      <button class="carousel-btn prev" onclick="carouselMove(-1)">‹</button>
-      <button class="carousel-btn next" onclick="carouselMove(1)">›</button>
+    </div>
+    -->
+
+    <!-- LICENCIA Y PRECIOS -->
+    <div class="section"
+      style="background: linear-gradient(135deg, #0a3880 0%, #1565c0 100%); color: white; border: none;">
+      <h2 style="color: white;">⭐ Licencia Premium Anual</h2>
+      <p style="color: #e3f2fd;">Desbloquea el potencial completo de Control Docente GT. La aplicación que descargas
+        desde Google Play incluye una prueba gratuita de 30 días. Para continuar usando todas las funciones sin
+        restricciones, adquiere tu licencia anual.</p>
+
+      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-top: 20px;">
+        <h3 style="margin-bottom: 15px; font-family: 'Merriweather Sans', sans-serif; font-size: 18px;">¿Qué incluye la
+          Licencia Full?</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span
+              style="color: #ffb300;">✓</span> Uso ilimitado de la plataforma sin cortes de 30 días.</li>
+          <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span
+              style="color: #ffb300;">✓</span> Acceso a los módulos de exportación en Excel y Cuadro Vivo.</li>
+          <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span
+              style="color: #ffb300;">✓</span> Sincronización automática con Google Drive.</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ffb300;">✓</span> Soporte
+            técnico prioritario.</li>
+        </ul>
+      </div>
+
+      <a href="https://tienda.profetoolsgt.com/checkout/buy/e1144da2-83a0-4b12-9bb2-3649fd68dae9?embed=1"
+        class="lemonsqueezy-button"
+        style="display: inline-block; margin-top: 24px; background: #ffb300; color: #0a3880; font-weight: 800; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 16px; box-shadow: 0 4px 15px rgba(255,179,0,0.4); transition: transform 0.2s;">Adquirir
+        Licencia Anual →</a>
     </div>
 
-    <div class="carousel-dots" id="gallery-dots"></div>
-    <p class="carousel-counter"><span id="gallery-current">1</span> / <span id="gallery-total">25</span></p>
-
-    <!-- LIGHTBOX CONTAINER -->
-    <div id="lightbox" onclick="this.classList.remove('active')">
-        <img id="lightbox-img" src="" alt="Zoom">
+    <!-- GOOGLE DRIVE -->
+    <div class="section info">
+      <h2>Integración y Uso de Google Drive API</h2>
+      <p><strong>Control Docente GT</strong> es una plataforma de software diseñada para la administración académica de
+        profesores en Guatemala. La aplicación integra un módulo de sincronización bidireccional en la nube que requiere
+        acceso al alcance <code>drive.metadata.readonly</code> de Google Drive.</p>
+      <p>Este permiso se utiliza exclusivamente para leer los metadatos y marcas de tiempo (timestamps) de los archivos
+        de respaldo del usuario, permitiendo determinar con precisión qué dispositivo posee la versión más reciente de
+        los registros académicos y prevenir conflictos o pérdida de datos al enlazar hasta 3 dispositivos por licencia.
+      </p>
+      <p>Control Docente GT no accede, modifica ni comparte archivos personales ajenos al funcionamiento de la
+        aplicación, garantizando la total privacidad de sus datos.</p>
     </div>
 
-    <script>
-      (function() {
-        const track  = document.getElementById('gallery-track');
-        const imgs   = track.querySelectorAll('img');
-        const dotsEl = document.getElementById('gallery-dots');
-        const curEl  = document.getElementById('gallery-current');
-        const totEl  = document.getElementById('gallery-total');
-        let current  = 0;
-        const total  = imgs.length;
-        totEl.textContent = total;
+    <!-- PRIVACIDAD -->
+    <div class="section">
+      <h2>Privacidad y Seguridad</h2>
+      <p>Control Docente GT implementa autenticación segura mediante Google Sign-In para proteger el acceso a funciones
+        relacionadas con respaldos y almacenamiento académico.</p>
+      <p>La aplicación solicita únicamente los permisos necesarios para el funcionamiento de herramientas específicas
+        como exportaciones, respaldos y sincronización con Google Drive.</p>
+      <p>La información utilizada dentro de la plataforma no es vendida ni compartida con terceros y permanece bajo
+        control del usuario o institución educativa.</p>
+    </div>
 
-        // Build dots and Lightbox listeners
-        imgs.forEach((img, i) => {
-          const d = document.createElement('button');
-          d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-          d.addEventListener('click', () => goTo(i));
-          dotsEl.appendChild(d);
+    <!-- FOTOGRAFIAS -->
+    <div class="section warning">
+      <h2>Uso de Fotografías de Estudiantes</h2>
+      <p><strong>Importante:</strong> El uso, almacenamiento o administración de fotografías de estudiantes dentro de la
+        plataforma es responsabilidad exclusiva del usuario o institución educativa.</p>
+      <p>Las imágenes deben utilizarse únicamente con fines académicos, administrativos o de identificación
+        institucional conforme a las políticas internas del establecimiento educativo correspondiente.</p>
+      <p>Se recomienda contar con autorización previa de padres de familia, encargados o representantes legales antes de
+        utilizar fotografías de estudiantes dentro de la aplicación.</p>
+      <p>El desarrollador de Control Docente GT no recopila, distribuye ni comercializa fotografías de estudiantes y no
+        se responsabiliza por usos indebidos realizados por terceros.</p>
+    </div>
 
-          // Add Lightbox
-          img.style.cursor = 'zoom-in';
-          img.addEventListener('click', () => {
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox').classList.add('active');
-          });
-        });
+    <!-- GALERÍA DE CAPTURAS (CARRUSEL AUTOMÁTICO) -->
+    <div class="section">
+      <h2>Galería de la Aplicación</h2>
+      <p>Explora la interfaz moderna e intuitiva de Control Docente GT, diseñada específicamente para el entorno
+        educativo móvil.</p>
 
-        function goTo(n) {
-          current = (n + total) % total;
-          track.style.transform = `translateX(-${current * 100}%)`;
-          dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-          curEl.textContent = current + 1;
+      <style>
+        .carousel-wrap {
+          position: relative;
+          overflow: hidden;
+          border-radius: 14px;
+          margin: 20px auto 0;
+          background: #e8edf5;
+          max-height: 600px;
+          max-width: 450px;
+          aspect-ratio: 9/16;
+          box-shadow: 0 8px 30px rgba(13, 71, 161, 0.15);
         }
 
-        window.carouselMove = function(dir) { goTo(current + dir); };
+        .carousel-track {
+          display: flex;
+          transition: transform 0.4s ease-in-out;
+          height: 100%;
+        }
 
-        // Reiniciar el timer correctamente
-        function resetTimer() {
+        .carousel-track img {
+          flex-shrink: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          background: #e8edf5;
+        }
+
+        .carousel-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(13, 71, 161, 0.75);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 44px;
+          height: 44px;
+          font-size: 20px;
+          cursor: pointer;
+          z-index: 10;
+          transition: background 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-btn:hover {
+          background: rgba(13, 71, 161, 1);
+        }
+
+        .carousel-btn.prev {
+          left: 8px;
+        }
+
+        .carousel-btn.next {
+          right: 8px;
+        }
+
+        .carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 6px;
+          margin-top: 14px;
+          flex-wrap: wrap;
+        }
+
+        .carousel-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #cbd5e1;
+          cursor: pointer;
+          transition: all 0.3s;
+          border: none;
+        }
+
+        .carousel-dot.active {
+          background: var(--azul);
+          transform: scale(1.3);
+        }
+
+        .carousel-counter {
+          text-align: center;
+          margin-top: 8px;
+          font-size: 13px;
+          color: var(--texto-suave);
+          font-weight: 700;
+        }
+
+        .carousel-outer {
+          padding: 0 30px;
+        }
+      </style>
+
+      <div class="carousel-wrap" id="gallery-wrap">
+        <div class="carousel-track" id="gallery-track">
+          <img src="0.jpg" alt="Pantalla de inicio">
+          <img src="1.jpg" alt="Menú principal">
+          <img src="3.jpg" alt="Módulo de asistencia">
+          <img src="4.jpg" alt="Registro de alumnos">
+          <img src="5.0.jpg" alt="EduCore - Gestión">
+          <img src="5.1.jpg" alt="Vista de cursos">
+          <img src="6.jpg" alt="Calificaciones">
+          <img src="7.jpg" alt="Reporte PDF">
+          <img src="8.jpg" alt="Configuración">
+          <img src="9.jpg" alt="Fotografías de alumnos">
+          <img src="10.jpg" alt="Cloud Sync">
+          <img src="11.jpg" alt="Asistencia masiva">
+          <img src="12.jpg" alt="Módulo de notas">
+          <img src="13.jpg" alt="Exportar datos">
+          <img src="14.jpg" alt="Panel docente">
+          <img src="15.jpg" alt="Horario de clases">
+          <img src="16.jpg" alt="Registro académico">
+          <img src="17.jpg" alt="Gestión escolar">
+          <img src="19.jpg" alt="Listado de secciones">
+          <img src="20.jpg" alt="Importar Excel">
+          <img src="21.jpg" alt="Estadísticas">
+          <img src="22.jpg" alt="Notificaciones">
+          <img src="23.jpg" alt="Perfil del docente">
+          <img src="26.jpg" alt="Reportes avanzados">
+          <img src="27.jpg" alt="Cierre de ciclo">
+        </div>
+        <button class="carousel-btn prev" onclick="carouselMove(-1)">‹</button>
+        <button class="carousel-btn next" onclick="carouselMove(1)">›</button>
+      </div>
+
+      <div class="carousel-dots" id="gallery-dots"></div>
+      <p class="carousel-counter"><span id="gallery-current">1</span> / <span id="gallery-total">25</span></p>
+
+      <!-- LIGHTBOX CONTAINER -->
+      <div id="lightbox" onclick="this.classList.remove('active')">
+        <img id="lightbox-img" src="" alt="Zoom">
+      </div>
+
+      <script>
+        (function () {
+          const track = document.getElementById('gallery-track');
+          const imgs = track.querySelectorAll('img');
+          const dotsEl = document.getElementById('gallery-dots');
+          const curEl = document.getElementById('gallery-current');
+          const totEl = document.getElementById('gallery-total');
+          let current = 0;
+          const total = imgs.length;
+          totEl.textContent = total;
+
+          // Build dots and Lightbox listeners
+          imgs.forEach((img, i) => {
+            const d = document.createElement('button');
+            d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            d.addEventListener('click', () => goTo(i));
+            dotsEl.appendChild(d);
+
+            // Add Lightbox
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+              document.getElementById('lightbox-img').src = img.src;
+              document.getElementById('lightbox').classList.add('active');
+            });
+          });
+
+          function goTo(n) {
+            current = (n + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            curEl.textContent = current + 1;
+          }
+
+          window.carouselMove = function (dir) { goTo(current + dir); };
+
+          // Reiniciar el timer correctamente
+          function resetTimer() {
             clearInterval(timer);
             timer = setInterval(() => goTo(current + 1), 4000);
-        }
+          }
 
-        // Auto-play every 4 seconds
-        let timer = setInterval(() => goTo(current + 1), 4000);
-        
-        document.getElementById('gallery-wrap').addEventListener('mouseenter', () => clearInterval(timer));
-        document.getElementById('gallery-wrap').addEventListener('mouseleave', resetTimer);
-        
-        // Detener autoplay si el lightbox está abierto
-        document.getElementById('lightbox').addEventListener('click', resetTimer);
-        imgs.forEach(img => img.addEventListener('click', () => clearInterval(timer)));
-      })();
-    </script>
-  </div>
+          // Auto-play every 4 seconds
+          let timer = setInterval(() => goTo(current + 1), 4000);
 
-  <!-- FAQ -->
-  <div class="section">
-    <h2>Preguntas Frecuentes (FAQ)</h2>
-    
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">1. ¿Cómo puedo registrar mi asistencia diaria?</h3>
-    <p>Para registrar su asistencia, ingrese a la aplicación con sus credenciales, diríjase a la sección "Asistencia" en el menú principal y presione el botón "Marcar Entrada" o "Marcar Salida" según corresponda. Asegúrese de tener activada la ubicación si el sistema lo requiere.</p>
+          document.getElementById('gallery-wrap').addEventListener('mouseenter', () => clearInterval(timer));
+          document.getElementById('gallery-wrap').addEventListener('mouseleave', resetTimer);
 
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">2. ¿Qué debo hacer si olvidé mi contraseña?</h3>
-    <p>En la pantalla de inicio de sesión, seleccione "Olvidé mi contraseña". Ingrese su correo electrónico institucional y recibirá un enlace con las instrucciones para restablecerla de forma segura.</p>
-
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">3. ¿Cómo puedo justificar una inasistencia o solicitar un permiso?</h3>
-    <p>Diríjase a la sección "Justificaciones" o "Permisos", seleccione la fecha correspondiente, elija el motivo (enfermedad, cita médica, etc.) y adjunte los documentos de respaldo requeridos (fotografías o PDFs). Luego, presione "Enviar para aprobación".</p>
-
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">4. ¿Dónde puedo consultar mi horario de clases asignado?</h3>
-    <p>Su horario está disponible en la pestaña "Horario" dentro de la aplicación. Allí podrá visualizar los cursos que imparte, los grados, secciones, aulas y los horarios respectivos para cada día de la semana.</p>
-
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">5. ¿Cómo ingreso o modifico las calificaciones de mis estudiantes?</h3>
-    <p>Vaya a la sección "Calificaciones" o "Notas", seleccione el curso y la sección. Aparecerá el listado de estudiantes donde podrá ingresar las calificaciones correspondientes al bloque o unidad. Recuerde presionar el botón "Guardar" para que los cambios se registren en el sistema.</p>
-
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">6. ¿Qué hago si la aplicación no funciona correctamente o presenta errores?</h3>
-    <p>Primero, verifique que su dispositivo esté conectado a internet y que tenga instalada la última actualización de la aplicación. Si el problema persiste, contacte al departamento de soporte técnico a través de la sección "Ayuda" en la app.</p>
-
-    <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">7. ¿Es posible utilizar la aplicación sin conexión a internet?</h3>
-    <p>Las funciones principales que requieren enviar datos al sistema (como marcar asistencia o subir notas) necesitan conexión a internet. Sin embargo, algunos datos cacheados como el horario pueden visualizarse de manera offline si ya ha iniciado sesión previamente.</p>
-  </div>
-
-  <!-- CONTACTO -->
-  <div class="section">
-    <h2>Contacto</h2>
-    <p>Para consultas relacionadas con la aplicación, privacidad o soporte técnico:</p>
-    <a href="mailto:controldocentegt@gmail.com" class="contact-email">
-      ✉️ controldocentegt@gmail.com
-    </a>
-    <a href="https://www.youtube.com/@ControlDocenteGT" target="_blank" class="contact-email" style="background: #fff0f0; border-color: rgba(204, 0, 0, 0.18); color: #cc0000; margin-left: 10px;">
-      ▶️ Tutoriales en YouTube
-    </a>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>© 2026 Control Docente GT. Todos los derechos reservados.</p>
-    <div class="dev">
-      <img src="../Desarrollador%20(2).png" alt="ProfeTools GT" class="dev-logo">
-      <span>Desarrollado por ProfeTools GT</span>
+          // Detener autoplay si el lightbox está abierto
+          document.getElementById('lightbox').addEventListener('click', resetTimer);
+          imgs.forEach(img => img.addEventListener('click', () => clearInterval(timer)));
+        })();
+      </script>
     </div>
-  </div>
 
-</div>
+    <!-- FAQ -->
+    <div class="section">
+      <h2>Preguntas Frecuentes (FAQ)</h2>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">1. ¿Cómo puedo registrar mi asistencia diaria?
+      </h3>
+      <p>Para registrar su asistencia, ingrese a la aplicación con sus credenciales, diríjase a la sección "Asistencia"
+        en el menú principal y presione el botón "Marcar Entrada" o "Marcar Salida" según corresponda. Asegúrese de
+        tener activada la ubicación si el sistema lo requiere.</p>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">2. ¿Qué debo hacer si olvidé mi contraseña?
+      </h3>
+      <p>En la pantalla de inicio de sesión, seleccione "Olvidé mi contraseña". Ingrese su correo electrónico
+        institucional y recibirá un enlace con las instrucciones para restablecerla de forma segura.</p>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">3. ¿Cómo puedo justificar una inasistencia o
+        solicitar un permiso?</h3>
+      <p>Diríjase a la sección "Justificaciones" o "Permisos", seleccione la fecha correspondiente, elija el motivo
+        (enfermedad, cita médica, etc.) y adjunte los documentos de respaldo requeridos (fotografías o PDFs). Luego,
+        presione "Enviar para aprobación".</p>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">4. ¿Dónde puedo consultar mi horario de clases
+        asignado?</h3>
+      <p>Su horario está disponible en la pestaña "Horario" dentro de la aplicación. Allí podrá visualizar los cursos
+        que imparte, los grados, secciones, aulas y los horarios respectivos para cada día de la semana.</p>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">5. ¿Cómo ingreso o modifico las calificaciones
+        de mis estudiantes?</h3>
+      <p>Vaya a la sección "Calificaciones" o "Notas", seleccione el curso y la sección. Aparecerá el listado de
+        estudiantes donde podrá ingresar las calificaciones correspondientes al bloque o unidad. Recuerde presionar el
+        botón "Guardar" para que los cambios se registren en el sistema.</p>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">6. ¿Qué hago si la aplicación no funciona
+        correctamente o presenta errores?</h3>
+      <p>Primero, verifique que su dispositivo esté conectado a internet y que tenga instalada la última actualización
+        de la aplicación. Si el problema persiste, contacte al departamento de soporte técnico a través de la sección
+        "Ayuda" en la app.</p>
+
+      <h3 style="font-size: 16px; color: var(--azul); margin-top: 15px;">7. ¿Es posible utilizar la aplicación sin
+        conexión a internet?</h3>
+      <p>Las funciones principales que requieren enviar datos al sistema (como marcar asistencia o subir notas)
+        necesitan conexión a internet. Sin embargo, algunos datos cacheados como el horario pueden visualizarse de
+        manera offline si ya ha iniciado sesión previamente.</p>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="section">
+      <h2>Contacto</h2>
+      <p>Para consultas relacionadas con la aplicación, privacidad o soporte técnico:</p>
+      <a href="mailto:controldocentegt@gmail.com" class="contact-email">
+        ✉️ controldocentegt@gmail.com
+      </a>
+      <a href="https://www.youtube.com/@ControlDocenteGT" target="_blank" class="contact-email"
+        style="background: #fff0f0; border-color: rgba(204, 0, 0, 0.18); color: #cc0000; margin-left: 10px;">
+        ▶️ Tutoriales en YouTube
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>© 2026 Control Docente GT. Todos los derechos reservados.</p>
+      <div class="dev">
+        <img src="../Desarrollador%20(2).png" alt="ProfeTools GT" class="dev-logo">
+        <span>Desarrollado por ProfeTools GT</span>
+      </div>
+    </div>
+
+  </div>
 </body>
+
 </html>
